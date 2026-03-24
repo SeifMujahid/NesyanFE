@@ -1,0 +1,90 @@
+<!-- ----------------------------------------------------------------------------- -->
+<!-- step3-patient-section  -->
+<!-- ----------------------------------------------------------------------------- -->
+<section class="step3-patient-section py-5">
+  <div class="step3-patient-container">
+    <h1>Create Account</h1>
+    <div class="image">
+      <img src="../../../../../assets/images/logo_test.png" alt="logo" />
+    </div>
+    <p>Complete all steps to join Nesyan</p>
+    <div
+      class="step-indicator d-flex justify-content-between align-items-center w-50 my-3"
+    >
+      <div class="step1 passed">1</div>
+      <div class="step2 active-step">2</div>
+      <div class="step3">3</div>
+    </div>
+    <div class="form-container w-100">
+      <h5>Link to Patient Account</h5>
+      <div class="form-container w-100">
+        <form
+          class="d-flex flex-column align-items-start w-100 justify-content-center"
+        >
+          <div
+            class="note w-100 px-2 py-1 my-3 bg-warning-subtle border-1 border-danger rounded"
+          >
+            <p class="fw-bold text-warning">
+              To link with a patient, you need to provide.
+            </p>
+          </div>
+          <div class="form-group w-100">
+            <label for="patient-username">Patient Username</label>
+            <input
+              type="text"
+              id="patient-username"
+              name="patient-username"
+              placeholder="Enter patient's username"
+              required
+            />
+          </div>
+          <div class="form-group w-100">
+            <label for="patient-id">Patient ID</label>
+            <input
+              type="text"
+              id="patient-id"
+              name="patient-id"
+              placeholder="Patient's Id"
+              required
+            />
+          </div>
+          <div class="form-group w-100">
+            <label for="patient-email">Patient Email</label>
+            <input
+              type="email"
+              id="patient-email"
+              name="patient-email"
+              placeholder="Patient's email"
+              required
+            />
+          </div>
+          <div class="form-group w-100">
+            <label for="patient-password">Patient Password</label>
+            <input
+              type="password"
+              id="patient-password"
+              name="patient-password"
+              placeholder="Patient's password"
+              required
+            />
+          </div>
+          <div
+            class="note w-100 px-2 py-1 my-3 bg-danger-subtle border-1 border-danger rounded"
+          >
+            <p class="fw-bold text-danger">
+              Patient will be notified and must approve this connection.
+            </p>
+          </div>
+          <div
+            class="buttons w-100 d-flex justify-content-between align-items-center shadow-lg"
+          >
+            <a routerLink="/register/step2" class="back">Back</a>
+            <a class="next" routerLink="/home-relative"
+              >Complete Registration</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

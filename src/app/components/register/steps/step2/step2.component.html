@@ -1,0 +1,86 @@
+<!-- ----------------------------------------------------------------------------- -->
+<!-- step2-section  -->
+<!-- ----------------------------------------------------------------------------- -->
+<section class="step2-section py-5">
+  <div class="step2-container">
+    <h1>Create Account</h1>
+    <div class="image">
+      <img src="../../../../../assets/images/logo_test.png" alt="logo" />
+    </div>
+    <p>Complete all steps to join Nesyan</p>
+    <div
+      class="step-indicator d-flex justify-content-between align-items-center w-50 my-3"
+    >
+      <div class="step1 passed">1</div>
+      <div class="step2 active-step">2</div>
+      <div class="step3">3</div>
+    </div>
+    <div class="form-container w-100">
+      <h5>Account Details</h5>
+      <div class="form-container w-100">
+        <form>
+          <div class="form-group w-100">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group w-100">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="form-group w-100">
+            <label for="age">Age</label>
+            <input
+              type="text"
+              name="age"
+              id="age"
+              placeholder="Enter your age"
+              required
+            />
+          </div>
+          <div class="form-group w-100">
+            <p>Register as</p>
+            <ul
+              class="w-100 m-0 p-0 d-flex justify-content-evenly align-items-center"
+            >
+              <li>
+                <input type="radio" name="role" id="patient" value="patient" />
+                <label for="patient">Patient</label>
+              </li>
+              <li>
+                <input type="radio" name="role" id="doctor" value="doctor" />
+                <label for="doctor">Doctor</label>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  name="role"
+                  id="relative"
+                  value="relative"
+                />
+                <label for="relative">Relative</label>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="buttons w-100 d-flex justify-content-between align-items-center"
+          >
+            <a routerLink="/register/step1" class="back">Back</a>
+            <a class="next" (click)="NextNavigate()">Next</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

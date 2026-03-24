@@ -1,0 +1,84 @@
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- reminders -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+>
+  <div class="top-part d-flex justify-content-between align-items-center w-100">
+    <div class="right">
+      <p class="p-0 m-0 fw-bold fs-5">
+        <i class="fa-solid fa-alarm-clock me-1 fs-3" style="color: #155dfc"></i>
+        Reminders
+      </p>
+      <p class="text-muted m-0 p-0">Manage patient's reminders</p>
+    </div>
+    <div class="left">
+      <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+        <i class="fa-regular fa-square-plus me-1 fs-5"></i>Add Reminder
+      </button>
+    </div>
+  </div>
+  <div
+    class="reminders-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+  >
+    <div class="reminder high">
+      <div class="text-muted">
+        <p>Medication</p>
+        <p>10:00AM - Take Morining Medication</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+    <div class="reminder medium">
+      <div class="text-muted">
+        <p>Doctor Appointment</p>
+        <p>14:00PM - Checkup</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+    <div class="reminder low">
+      <div class="text-muted">
+        <p>Game Time</p>
+        <p>18:00PM - Play MindGame</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- add-reminder -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          Add New Reminder
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p>Reminder Details</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

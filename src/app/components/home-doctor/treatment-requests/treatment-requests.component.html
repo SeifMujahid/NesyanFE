@@ -1,0 +1,348 @@
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- nav -->
+<!-- --------------------------------------------------------------------------------------- -->
+<nav class="container-fluid d-flex justify-content-between align-items-center">
+  <div class="logo d-flex justify-content-center align-items-center">
+    <div class="logo-image">
+      <img
+        src="../../../assets/images/logo_test.png"
+        alt="logo"
+        class="w-75 h-75 rounded"
+      />
+    </div>
+    <a routerLink="/nesyan" class="logo-text">Nesyan</a>
+  </div>
+  <div class="d-flex align-items-center">
+    <span class="fs-5 fw-medium">Dr.Seif Mujahid</span>
+    <a
+      routerLink="/nesyan"
+      class="d-flex justify-content-center align-items-center btn btn-primary ms-2"
+      ><i class="fa-solid fa-arrow-right-from-bracket me-1"></i
+      ><span>Logout</span></a
+    >
+  </div>
+</nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-center align-items-start gap-4"
+>
+  <div class="container">
+    <div
+      class="top d-flex justify-content-between align-items-center mb-4 border-b"
+    >
+      <h2><i class="fa-solid fa-clipboard-user me-2"></i>Treatment Requests</h2>
+      <a routerLink="/home-doctor" class="btn btn-primary">Back to Home</a>
+    </div>
+    <div
+      class="requests-list px-4 d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+    >
+      <div
+        class="request d-flex justify-content-between align-items-center w-100"
+      >
+        <div
+          class="patient d-flex justify-content-center align-items-center gap-3 text-center"
+        >
+          <div class="image rounded-circle">
+            <img
+              src="../../../../assets/images/avatar_test.png"
+              alt="profile"
+              class="w-100 rounded-circle"
+            />
+          </div>
+          <div class="info">
+            <span class="m-0 p-0">Patient</span>
+            <h3>Ali Mohamed</h3>
+            <div
+              class="sub-info d-flex justify-content-between align-items-center gap-3"
+            >
+              <p class="m-0 p-0 blue-t">Age: 30</p>
+              <p class="m-0 p-0 blue-t">Gender: Male</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sender d-flex flex-column justify-content-center align-items-start text-center"
+        >
+          <div class="main-sub-info">
+            <span class="m-0 p-0">Requested by</span>
+            <h3>Mohamed Ali Mohamed</h3>
+          </div>
+          <div
+            class="sub-info d-flex justify-content-center align-items-center gap-3 w-100"
+          >
+            <p class="m-0 p-0 blue-t">Son</p>
+            <p class="m-0 p-0 blue-t">2026-02-23</p>
+          </div>
+        </div>
+        <div
+          class="actions d-flex flex-column justify-content-center align-items-between gap-2"
+        >
+          <button
+            class="btn btn-outline-primary"
+            data-bs-target="#exampleModalToggle"
+            data-bs-toggle="modal"
+          >
+            <i class="fa-solid fa-folder me-1"></i>View Details
+          </button>
+          <div class="d-flex justify-content-between align-items-center gap-2">
+            <button class="btn btn-outline-success">
+              <i class="fa-solid fa-square-check me-1"></i>Accept
+            </button>
+            <button class="btn btn-outline-danger">
+              <i class="fa-solid fa-rectangle-xmark me-1"></i>Reject
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="request d-flex justify-content-between align-items-center w-100"
+      >
+        <div
+          class="patient d-flex justify-content-center align-items-center gap-3 text-center"
+        >
+          <div class="image rounded-circle">
+            <img
+              src="../../../../assets/images/avatar_test.png"
+              alt="profile"
+              class="w-100 rounded-circle"
+            />
+          </div>
+          <div class="info">
+            <span class="m-0 p-0">Patient</span>
+            <h3>Ali Hassan</h3>
+            <div
+              class="sub-info d-flex justify-content-between align-items-center gap-3"
+            >
+              <p class="m-0 p-0 blue-t">Age: 60</p>
+              <p class="m-0 p-0 blue-t">Gender: Male</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sender d-flex flex-column justify-content-center align-items-start text-center"
+        >
+          <div class="main-sub-info">
+            <span class="m-0 p-0">Requested by</span>
+            <h3>Maryam Ali</h3>
+          </div>
+          <div
+            class="sub-info d-flex justify-content-center align-items-center gap-3 w-100"
+          >
+            <p class="m-0 p-0 blue-t">Daughter</p>
+            <p class="m-0 p-0 blue-t">2026-01-23</p>
+          </div>
+        </div>
+        <div
+          class="actions d-flex flex-column justify-content-center align-items-between gap-2"
+        >
+          <button
+            class="btn btn-outline-primary"
+            data-bs-target="#exampleModalToggle"
+            data-bs-toggle="modal"
+          >
+            <i class="fa-solid fa-folder me-1"></i>View Details
+          </button>
+          <div class="d-flex justify-content-between align-items-center gap-2">
+            <button class="btn btn-outline-success">
+              <i class="fa-solid fa-square-check me-1"></i>Accept
+            </button>
+            <button class="btn btn-outline-danger">
+              <i class="fa-solid fa-rectangle-xmark me-1"></i>Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- view-details -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1
+          class="modal-title fs-4 text-primary fw-bold"
+          id="exampleModalToggleLabel"
+        >
+          <i class="fa-solid fa-folder-open me-1 fs-3"></i>Patient's Information
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <div class="info-group">
+          <div class="top-1">
+            <h4><i class="fa-solid fa-user me-1"></i>Personal Information</h4>
+          </div>
+          <div class="table-container-1">
+            <table class="table table-striped w-100 p-0 m-0">
+              <tbody>
+                <tr>
+                  <td>Full Name:</td>
+                  <td>Ali Hassan</td>
+                </tr>
+                <tr>
+                  <td>Age:</td>
+                  <td>60</td>
+                </tr>
+                <tr>
+                  <td>Gender:</td>
+                  <td>Male</td>
+                </tr>
+                <tr>
+                  <td>ُEmail:</td>
+                  <td>alihassan@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>Address:</td>
+                  <td>123 Main Street, Cairo, Egypt</td>
+                </tr>
+                <tr>
+                  <td>Phone Number:</td>
+                  <td>01012345678</td>
+                </tr>
+                <tr>
+                  <td>Emergency Contact:</td>
+                  <td>01012345678</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="top-2">
+            <h4>
+              <i class="fa-solid fa-file-medical me-1"></i>Medical History
+            </h4>
+          </div>
+          <div class="table-container-2">
+            <table class="table table-striped w-100 p-0 m-0">
+              <tbody>
+                <tr>
+                  <td>Height:</td>
+                  <td>175 cm</td>
+                </tr>
+                <tr>
+                  <td>Weight:</td>
+                  <td>60 kg</td>
+                </tr>
+                <tr>
+                  <td>Blood Type:</td>
+                  <td>A+</td>
+                </tr>
+                <tr>
+                  <td>Chronic Diseases:</td>
+                  <td>
+                    <ul
+                      class="d-flex justify-content-center align-items-center flex-wrap m-0 p-0 list-unstyled"
+                    >
+                      <li>Hypertension</li>
+                      <li>Diabetes</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="top-3">
+            <h4>
+              <i class="fa-solid fa-user-group me-1"></i>Relative Information
+            </h4>
+          </div>
+          <div class="table-container-3">
+            <table class="table table-striped w-100 p-0 m-0">
+              <tbody>
+                <tr>
+                  <td>Name:</td>
+                  <td>Sameh Hassan</td>
+                </tr>
+                <tr>
+                  <td>Relationship:</td>
+                  <td>Brother</td>
+                </tr>
+                <tr>
+                  <td>Email:</td>
+                  <td>samehhassan@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>Phone:</td>
+                  <td>01012345678</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="top-4">
+            <h4>
+              <i class="fa-solid fa-brain me-1"></i>Alzheimer's Condition
+              Assessment
+            </h4>
+          </div>
+          <div class="table-container-4">
+            <table class="table table-striped w-100 p-0 m-0">
+              <tbody>
+                <tr>
+                  <td>Memory Loss:</td>
+                  <td>Often</td>
+                </tr>
+                <tr>
+                  <td>Confusion about Time/Place:</td>
+                  <td>Sometimes</td>
+                </tr>
+                <tr>
+                  <td>Difficulty with Tasks:</td>
+                  <td>Rarely</td>
+                </tr>
+                <tr>
+                  <td>Language Problems:</td>
+                  <td>Sometimes</td>
+                </tr>
+                <tr>
+                  <td>Mood Changes:</td>
+                  <td>Often</td>
+                </tr>
+                <tr>
+                  <td>Poor Judgment:</td>
+                  <td>Rarely</td>
+                </tr>
+                <tr>
+                  <td>Withdrawal from Activities:</td>
+                  <td>Sometimes</td>
+                </tr>
+                <tr>
+                  <td>Personality Changes:</td>
+                  <td>Rarely</td>
+                </tr>
+                <tr>
+                  <td>Repetitive Behavior:</td>
+                  <td>Sometimes</td>
+                </tr>
+                <tr>
+                  <td>Getting Lost/Time Confusion:</td>
+                  <td>Often</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

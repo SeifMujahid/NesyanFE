@@ -1,0 +1,102 @@
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- appointments -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+>
+  <div class="top-part d-flex justify-content-between align-items-center w-100">
+    <div class="right">
+      <p class="p-0 m-0 fw-bold fs-5">
+        <i
+          class="fa-solid fa-calendar-days me-1 fs-3"
+          style="color: #9810fa"
+        ></i>
+        Appointments
+      </p>
+      <p class="text-muted m-0 p-0">Schedule and track appointments</p>
+    </div>
+    <div class="left">
+      <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+        <i class="fa-regular fa-square-plus me-1 fs-5"></i>Add Appointment
+      </button>
+    </div>
+  </div>
+  <div
+    class="appointments-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+  >
+    <div class="appointment">
+      <div class="d-flex flex-column gap-1">
+        <p class="fs-4">Neurology Checkup</p>
+        <div class="d-flex flex-column gap-2">
+          <span
+            ><i class="fa-solid fa-calendar-day fs-5 me-1"></i> 2023-10-15 at
+            10:00 AM</span
+          >
+          <span
+            ><i class="fa-solid fa-user-doctor fs-5 me-1"></i> Dr. Ahmed</span
+          >
+          <span
+            ><i class="fa-solid fa-map-pin fs-5 me-1"></i> Cairo Hospital -
+            Mental Health Section</span
+          >
+        </div>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+    <div class="appointment">
+      <div class="d-flex flex-column gap-1">
+        <p class="fs-4">Neurology Checkup</p>
+        <div class="d-flex flex-column gap-2">
+          <span
+            ><i class="fa-solid fa-calendar-day fs-5 me-1"></i> 2023-10-15 at
+            10:00 AM</span
+          >
+          <span
+            ><i class="fa-solid fa-user-doctor fs-5 me-1"></i> Dr. Ahmed</span
+          >
+          <span
+            ><i class="fa-solid fa-map-pin fs-5 me-1"></i> Cairo Hospital -
+            Mental Health Section</span
+          >
+        </div>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- add-appointment -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          Add New Appointment
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p>Appointment Details</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

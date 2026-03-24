@@ -1,0 +1,180 @@
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- mind-games -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+>
+  <div class="top-part d-flex justify-content-between align-items-center w-100">
+    <div class="right">
+      <p class="p-0 m-0 fw-bold fs-5">
+        <i class="fa-solid fa-gamepad me-1 fs-4" style="color: #9810fa"></i>
+        Mind Games
+      </p>
+      <p class="text-muted m-0 p-0">Assign congnitive games to patients</p>
+    </div>
+    <div class="left">
+      <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+        <i class="fa-regular fa-square-plus me-1 fs-5"></i>Add Game
+      </button>
+    </div>
+  </div>
+  <div
+    class="games-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+  >
+    <div class="game">
+      <div class="text-muted">
+        <p>Memory Match</p>
+        <p>Memory - Assigned: 2025-11-15</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+    <div class="game">
+      <div class="text-muted">
+        <p>Word Puzzle</p>
+        <p>Cognitive - Assigned: 2025-11-16</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-trash-can fs-5 text-danger pointer-event"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- add-game -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          Add New Game
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <div
+          class="form-container fw-bold fs-5 d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+        >
+          <div
+            class="form-group d-flex justify-content-between align-items-center gap-2 w-100 border-b"
+          >
+            <div>
+              <input
+                class="me-2"
+                type="checkbox"
+                name="new-games"
+                id="memory-match"
+              />
+              <label for="memory-match">Memory Match</label>
+            </div>
+            <div>
+              <button
+                class="btn btn-primary"
+                data-bs-target="#exampleModalToggle-2"
+                data-bs-toggle="modal"
+              >
+                About
+              </button>
+            </div>
+          </div>
+          <div
+            class="form-group d-flex justify-content-between align-items-center gap-2 w-100 border-b"
+          >
+            <div>
+              <input
+                class="me-2"
+                type="checkbox"
+                name="new-games"
+                id="word-puzzle"
+              />
+              <label for="word-puzzle">Word Puzzle</label>
+            </div>
+            <div>
+              <button
+                class="btn btn-primary"
+                data-bs-target="#exampleModalToggle-2"
+                data-bs-toggle="modal"
+              >
+                About
+              </button>
+            </div>
+          </div>
+          <div
+            class="form-group d-flex justify-content-between align-items-center gap-2 w-100"
+          >
+            <div>
+              <input
+                class="me-2"
+                type="checkbox"
+                name="new-games"
+                id="word-search"
+              />
+              <label for="word-search">Word Search</label>
+            </div>
+            <div>
+              <button
+                class="btn btn-primary"
+                data-bs-target="#exampleModalToggle-2"
+                data-bs-toggle="modal"
+              >
+                About
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- about-game -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle-2"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Game</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p>Information about the selected game</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          data-bs-target="#exampleModalToggle"
+          data-bs-toggle="modal"
+        >
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

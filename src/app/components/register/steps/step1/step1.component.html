@@ -1,0 +1,105 @@
+<!-- ----------------------------------------------------------------------------- -->
+<!-- step1-section  -->
+<!-- ----------------------------------------------------------------------------- -->
+<section class="step1-section py-5">
+  <div class="step1-container">
+    <h1>Create Account</h1>
+    <div class="image">
+      <img src="../../../../../assets/images/logo_test.png" alt="logo" />
+    </div>
+    <p>Complete all steps to join Nesyan</p>
+    <div
+      class="step-indicator d-flex justify-content-between align-items-center w-50 my-3"
+    >
+      <div class="step1 active-step">1</div>
+      <div class="step2">2</div>
+      <div class="step3">3</div>
+    </div>
+    <div class="form-container w-100">
+      <h5>Personal Information</h5>
+      <form class="d-flex flex-column justify-content-center w-100">
+        <div
+          class="form-top d-flex justify-content-between align-items-center w-100"
+        >
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter your first name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-middel w-100">
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              placeholder="Enter your user name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="nationalID">National ID</label>
+            <input
+              type="text"
+              id="nationalID"
+              name="nationalID"
+              placeholder="Enter your national ID"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option disabled selected hidden>Select your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="form-bottom d-flex justify-content-between align-items-center w-100"
+        >
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
+              <option disabled selected hidden>Select your country</option>
+              <option value="egypt">Egypt</option>
+              <option value="saudi-arabia">Saudi Arabia</option>
+              <option value="kuwait">Kuwait</option>
+              <option value="qatar">Qatar</option>
+              <option value="uae">United Arab Emirates</option>
+              <option value="algeria">Algeria</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input
+              id="city"
+              type="text"
+              name="city"
+              placeholder="Enter your city"
+              required
+            />
+          </div>
+        </div>
+        <a routerLink="/register/step2">Next</a>
+      </form>
+    </div>
+  </div>
+</section>

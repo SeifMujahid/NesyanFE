@@ -1,0 +1,286 @@
+<!-- ----------------------------------------------------------------------------- -->
+<!-- step3-patient-section  -->
+<!-- ----------------------------------------------------------------------------- -->
+<section class="step3-patient-section py-5">
+  <div class="step3-patient-container">
+    <h1>Create Account</h1>
+    <div class="image">
+      <img src="../../../../../assets/images/logo_test.png" alt="logo" />
+    </div>
+    <p>Complete all steps to join Nesyan</p>
+    <div
+      class="step-indicator d-flex justify-content-between align-items-center w-50 my-3"
+    >
+      <div class="step1 passed">1</div>
+      <div class="step2 active-step">2</div>
+      <div class="step3">3</div>
+    </div>
+    <div class="form-container w-100">
+      <h5>Medical History</h5>
+      <div class="form-container w-100">
+        <form>
+          <div class="form-top">
+            <div
+              class="w-100 d-flex justify-content-between align-content-center gap-2"
+            >
+              <div class="form-group">
+                <label for="height">Height(cm)</label>
+                <input
+                  type="text"
+                  name="height"
+                  id="height"
+                  placeholder="e.g. 170"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight(kg)</label>
+                <input
+                  type="text"
+                  name="weight"
+                  id="weight"
+                  placeholder="e.g. 70"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="bloodType">Blood Type</label>
+                <select name="bloodtype" id="bloodType" required>
+                  <option value="" disabled selected hidden>eg. A+</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <p>Chronic Diseases</p>
+              <div
+                class="d-flex flex-wrap justify-content-between align-content-center checkboxes-group"
+              >
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="bloodpressure"
+                    value="bloodpressure"
+                  />
+                  <label for="bloodpressure">Blood pressure</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="diabetes"
+                    value="diabetes"
+                  />
+                  <label for="diabetes">Diabetes</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="asthma"
+                    value="asthma"
+                  />
+                  <label for="asthma">Asthma</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="heartdisease"
+                    value="heartdisease"
+                  />
+                  <label for="heartdisease">Heart disease</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="chestallergies"
+                    value="chestallergies"
+                  />
+                  <label for="chestallergies">Chest allergies</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="kidneydiseases"
+                    value="kidneydiseases"
+                  />
+                  <label for="kidneydiseases">Kidney diseases</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="liverdiseases"
+                    value="liverdiseases"
+                  />
+                  <label for="liverdiseases">Liver diseases</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="immunediseases"
+                    value="immunediseases"
+                  />
+                  <label for="immunediseases">Immune diseases</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="otherdiseases"
+                    value="otherdiseases"
+                  />
+                  <label for="otherdiseases">Other</label>
+                </div>
+                <div class="check-group">
+                  <input
+                    type="checkbox"
+                    name="chronicdiseases"
+                    id="nodiseases"
+                    value="nodiseases"
+                  />
+                  <label for="nodiseases">No diseases</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-middel">
+            <p class="mb-2">Alzheimer's Stage (Managed by Doctor)</p>
+            <div>
+              <ul>
+                <li class="selected">
+                  <input
+                    type="radio"
+                    name="alzheimerstage"
+                    id="stage1"
+                    disabled
+                    checked
+                  />
+                  <label for="stage1">Stage 1 - Early/Mild (Default)</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="alzheimerstage"
+                    id="stage2"
+                    disabled
+                  />
+                  <label for="stage2"
+                    >Stage 2 - Middle/Moderate (Doctor Only)</label
+                  >
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="alzheimerstage"
+                    id="stage3"
+                    disabled
+                  />
+                  <label for="stage3"
+                    >Stage 3 - Late/Severe (Doctor Only)</label
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <h5 class="mt-2">Alzheimer's Condition Assessment</h5>
+          <div
+            class="form-bottom w-100 d-flex flex-column justify-content-center"
+          >
+            <div class="select-group w-100">
+              <label for="q1">Do you experience memory issues?</label>
+              <select name="q1" id="q1">
+                <option value="" disabled selected hidden>Select one</option>
+                <option value="never">Never</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="often">Often</option>
+                <option value="always">Always</option>
+              </select>
+            </div>
+            <div class="select-group w-100">
+              <label for="q2">Do you have difficulties with daily tasks?</label>
+              <select name="q2" id="q2">
+                <option value="" disabled selected hidden>Select one</option>
+                <option value="none">No difficulties</option>
+                <option value="minor">Minor difficulties</option>
+                <option value="moderate">Moderate difficulties</option>
+                <option value="severe">Severe difficulties</option>
+              </select>
+            </div>
+            <div class="select-group w-100">
+              <label for="q3"
+                >Do you experience confusion about time or place?</label
+              >
+              <select name="q3" id="q3">
+                <option value="" disabled selected hidden>Select one</option>
+                <option value="never">Never</option>
+                <option value="rarely">Rarely</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="frequently">Frequently</option>
+              </select>
+            </div>
+            <div class="select-group w-100">
+              <label for="q4"
+                >Do you have trouble finding words or speaking?</label
+              >
+              <select name="q4" id="q4">
+                <option value="" disabled selected hidden>Select one</option>
+                <option value="none">No issues</option>
+                <option value="occasionally">Occasionally</option>
+                <option value="frequently">Frequently</option>
+                <option value="severely">Severe issues</option>
+              </select>
+            </div>
+            <div class="select-group w-100">
+              <label for="q5">Do you notice changes in mood or behavior?</label>
+              <select name="q5" id="q5">
+                <option value="" disabled selected hidden>Select one</option>
+                <option value="none">No changes</option>
+                <option value="minor">Minor changes</option>
+                <option value="moderate">Moderate changes</option>
+                <option value="significant">Significant changes</option>
+              </select>
+            </div>
+            <div class="select-group w-100">
+              <label for="q6">How long have you noticed these symptoms?</label>
+              <input
+                type="text"
+                name="q6"
+                id="q6"
+                placeholder="e.g. 6 months"
+                required
+              />
+            </div>
+          </div>
+          <div
+            class="note w-100 px-2 py-1 my-3 bg-warning border-1 border-danger rounded"
+          >
+            <p class="fw-bolder text-black">
+              This assessment helps your doctor understand your condition
+              better. Your doctor will conduct a full evaluation and may adjust
+              your stage if needed.
+            </p>
+          </div>
+          <div
+            class="buttons w-100 d-flex justify-content-between align-items-center shadow-lg"
+          >
+            <a routerLink="/register/step2" class="back">Back</a>
+            <a class="next" (click)="NavigateToHome()">Complete Registration</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
