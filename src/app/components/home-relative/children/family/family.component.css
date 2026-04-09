@@ -43,14 +43,14 @@
   padding: 8px 16px;
   cursor: pointer;
   font-weight: bolder;
-  background-color: #ecb39b;
+  background-color: white;
   border: 1px solid #f54900;
   box-shadow: 0 0 5px #f54900 inset;
   transition: 0.3s all linear;
 }
 
 .family-list .family-member:hover {
-  background-color: #e6875f;
+  background-color: #eeaf94;
   border: 1px solid #f54900;
   box-shadow: 0 0 0px #f54900 inset;
 }
@@ -60,6 +60,44 @@
   padding: 0px;
 }
 
-.family-list .family-member .fa-trash {
-  color: red;
+.family-list .family-member .trash-can {
+  cursor: pointer;
+}
+
+.family-list .family-member .trash-can:hover {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: translate(-0.5px, -0.5px);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85% {
+    transform: translate(0.5px, 0.5px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }

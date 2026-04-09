@@ -50,39 +50,81 @@
 }
 
 .high {
-  background-color: #ffe2e2;
+  background-color: white;
   border: 1px solid #9f0712;
   box-shadow: 0 0 5px inset #9f0712;
 }
 
 .high:hover {
-  background-color: #ffc9c9;
+  background-color: #ffe2e2;
   box-shadow: 0 0 0px inset #9f0712;
 }
 
 .medium {
-  background-color: #fef9c2;
+  background-color: white;
   border: 1px solid #894b00;
   box-shadow: 0 0 5px inset #894b00;
 }
 
 .medium:hover {
-  background-color: #fff085;
+  background-color: #fef9c2;
   box-shadow: 0 0 0px inset #894b00;
 }
 
 .low {
-  background-color: #dcfce7;
+  background-color: white;
   border: 1px solid #00a63e;
   box-shadow: 0 0 5px inset #00a63e;
 }
 
 .low:hover {
-  background-color: #b7ffd0;
+  background-color: #dcfce7;
   box-shadow: 0 0 0px inset #00a63e;
 }
 
 .reminders-list .reminder p {
   margin: 0px;
   padding: 0px;
+}
+
+.reminders-list .reminder .trash-can {
+  cursor: pointer;
+}
+
+.reminders-list .reminder .trash-can:hover {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: translate(-0.5px, -0.5px);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85% {
+    transform: translate(0.5px, 0.5px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
