@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  //guard before authentication goes here
   { path: '', redirectTo: '/nesyan', pathMatch: 'full' },
   {
     path: 'nesyan',
@@ -83,6 +84,7 @@ const routes: Routes = [
       },
     ],
   },
+  //guard if already authenticated goes here
   {
     path: 'home-patient',
     loadComponent: () =>
@@ -208,6 +210,11 @@ const routes: Routes = [
         title: 'Statistics',
       },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: '/nesyan',
+    pathMatch: 'full',
   },
 ];
 
