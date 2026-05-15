@@ -1,0 +1,106 @@
+.tab-content {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.tab-content .top-part {
+  padding: 8px 0px;
+}
+
+.tab-content .top-part .right p i {
+  color: #9810fa;
+}
+
+.tab-content .top-part .left i {
+  color: white;
+}
+
+.tab-content .top-part .left button {
+  background-color: #9810fa;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #9810fa;
+  box-shadow: 0 0 5px #9810fa;
+  transition: 0.3s all linear;
+}
+
+.tab-content .top-part .left button:hover {
+  background-color: #400868;
+  border: 1px solid #400868;
+  box-shadow: 0 0 5px #400868;
+}
+
+.appointments-list .appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bolder;
+  background-color: white;
+  border: 1px solid #9810fa;
+  box-shadow: 0 0 5px #9810fa inset;
+  transition: 0.3s all linear;
+}
+
+.appointments-list .appointment:hover {
+  background-color: #deb4fc;
+  border: 1px solid #9810fa;
+  box-shadow: 0 0 0px #9810fa inset;
+}
+
+.appointments-list .appointment p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.appointments-list .appointment .trash-can {
+  cursor: pointer;
+}
+
+.appointments-list .appointment .trash-can:hover {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: translate(-0.5px, -0.5px);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85% {
+    transform: translate(0.5px, 0.5px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

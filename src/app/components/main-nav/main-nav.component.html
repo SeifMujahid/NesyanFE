@@ -1,1 +1,24 @@
-<p>main-nav works!</p>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main nav -->
+<!-- --------------------------------------------------------------------------------------- -->
+<nav class="container-fluid d-flex justify-content-between align-items-center">
+  <div class="logo d-flex justify-content-start align-items-center">
+    <a routerLink="/nesyan" class="logo-image">
+      <img src="./assets/images/Nesyan.png" alt="logo" class="w-100" />
+    </a>
+    <a routerLink="/nesyan" class="logo-text ps-2">Nesyan</a>
+  </div>
+  <div class="d-flex align-items-center">
+    <span><i class="fa-solid fa-bell fs-3"></i></span>
+    <a routerLink="/patient/my-profile" class="m-2">
+      <i class="fa-regular fa-circle-user fs-2"></i>
+    </a>
+    <span class="fs-5 fw-medium">Seif Mujahid</span>
+    <a
+      routerLink="/nesyan"
+      class="d-flex justify-content-center align-items-center btn btn-primary ms-2"
+      ><i class="fa-solid fa-arrow-right-from-bracket me-1"></i
+      ><span>Logout</span></a
+    >
+  </div>
+</nav>

@@ -1,0 +1,156 @@
+/* --------------------------------------------------------------------------------- */
+/* main-section */
+/* --------------------------------------------------------------------------------- */
+.main-section {
+  min-height: 100vh;
+  background-color: #dbeafe;
+  padding: 20px 32px;
+  padding-top: 100px;
+}
+
+.patient-container {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 24px 16px;
+  border-radius: 8px;
+}
+
+.patient-container .patient-list .patient {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  border: 1px solid rgb(21, 93, 252, 0.8);
+  box-shadow: 0 0 5px inset #155dfc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s all linear;
+}
+
+.patient-container .patient-list .patient:hover {
+  background-color: #dbeafe;
+  box-shadow: 0 0 0px #155dfc inset;
+}
+
+.patient-container .patient-list .active,
+.patient-container .patient-list .active:hover {
+  background-color: #dbeafe;
+  box-shadow: 0 0 5px #155dfc;
+}
+
+.patient-container .patient-list .patient p {
+  margin: 0px;
+  font-weight: bolder;
+}
+
+.patient-container .patient-list .patient div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patient-container .patient-list .patient .stage1 {
+  width: fit-content;
+  background-color: white;
+  color: #155dfc;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 3px inset rgb(0, 0, 0, 0.5);
+  border: 1px solid #155dfc;
+}
+
+.patient-container .patient-list .patient .stage2 {
+  width: fit-content;
+  background-color: white;
+  color: #016630;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 3px inset rgb(0, 0, 0, 0.5);
+  border: 1px solid #016630;
+}
+
+.patient-container .patient-list .patient .stage3 {
+  width: fit-content;
+  background-color: white;
+  color: #6e11b0;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 3px inset rgb(0, 0, 0, 0.5);
+  border: 1px solid #6e11b0;
+}
+
+.patient-details .patient-bar {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bolder;
+}
+
+.patient-details .patient-bar .stage-1 {
+  width: fit-content;
+  background-color: #dbeafe;
+  color: #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #155dfc;
+}
+
+.patient-details .patient-bar .stage-2 {
+  width: fit-content;
+  background-color: #dcfce7;
+  color: #00a63e;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #00a63e;
+}
+
+.patient-details .patient-bar .stage-3 {
+  width: fit-content;
+  background-color: #f3e8ff;
+  color: #6e11b0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #6e11b0;
+}
+
+.tabs-list {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 16px 16px;
+  border-radius: 8px;
+}
+
+.tabs-list ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(21, 93, 252, 0.8);
+  background-color: white;
+  padding: 4px 16px;
+  border-radius: 8px;
+  border: 1px solid rgb(21, 93, 252, 0.8);
+  text-align: center;
+  box-shadow: 0 0 5px #155dfc inset;
+  transition: 0.3s all linear;
+}
+
+.tabs-list ul li a:hover {
+  color: #155dfc;
+  background-color: #dbeafe;
+  box-shadow: 0 0 0px #155dfc inset;
+}
+
+.tabs-list ul li a.active {
+  color: #155dfc;
+  background-color: #dbeafe;
+  padding: 4px 16px;
+  box-shadow: 0 0 5px #155dfc;
+}

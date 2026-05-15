@@ -28,7 +28,7 @@ const routes: Routes = [
           import('./components/login/login.component').then(
             (m) => m.LoginComponent,
           ),
-        title: 'Nesyan Login',
+        title: 'Nesyan|Login',
       },
       {
         path: 'register',
@@ -36,7 +36,23 @@ const routes: Routes = [
           import('./components/register/register.component').then(
             (m) => m.RegisterComponent,
           ),
-        title: 'Nesyan Register',
+        title: 'Nesyan|Register',
+      },
+      {
+        path: 'forget-password',
+        loadComponent: () =>
+          import('./components/forget-password/forget-password.component').then(
+            (m) => m.ForgetPasswordComponent,
+          ),
+        title: 'Nesyan|Forget Password',
+      },
+      {
+        path: 'verifay-account',
+        loadComponent: () =>
+          import('./components/verifay-account/verifay-account.component').then(
+            (m) => m.VerifayAccountComponent,
+          ),
+        title: 'Nesyan|Verify Account',
       },
     ],
   },
@@ -47,17 +63,15 @@ const routes: Routes = [
       import('./layouts/caregive/caregive.component').then(
         (m) => m.CaregiveComponent,
       ),
-    title: 'Nesyan Caregiver',
-    children: [
-      {
-        path: 'my-profile',
-        loadComponent: () =>
-          import('./components/caregiver-profile/caregiver-profile.component').then(
-            (m) => m.CaregiverProfileComponent,
-          ),
-        title: 'Nesyan|Caregiver Profile',
-      },
-    ],
+    title: 'Nesyan|Caregiver',
+  },
+  {
+    path: 'caregiver/my-profile',
+    loadComponent: () =>
+      import('./components/caregiver-profile/caregiver-profile.component').then(
+        (m) => m.CaregiverProfileComponent,
+      ),
+    title: 'Nesyan|Caregiver Profile',
   },
   //patient routing
   {
@@ -66,17 +80,15 @@ const routes: Routes = [
       import('./layouts/patient/patient.component').then(
         (m) => m.PatientComponent,
       ),
-    title: 'Nesyan Patient',
-    children: [
-      {
-        path: 'my-profile',
-        loadComponent: () =>
-          import('./components/patient-profile/patient-profile.component').then(
-            (m) => m.PatientProfileComponent,
-          ),
-        title: 'Nesyan|Patient Profile',
-      },
-    ],
+    title: 'Nesyan|Patient',
+  },
+  {
+    path: 'patient/my-profile',
+    loadComponent: () =>
+      import('./components/patient-profile/patient-profile.component').then(
+        (m) => m.PatientProfileComponent,
+      ),
+    title: 'Nesyan|Patient Profile',
   },
   //doctor routing
   {

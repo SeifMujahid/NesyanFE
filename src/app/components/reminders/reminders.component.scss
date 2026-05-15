@@ -1,0 +1,130 @@
+.tab-content {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.tab-content .top-part {
+  padding: 8px 0px;
+}
+
+.tab-content .top-part .right p i {
+  color: #155dfc;
+}
+
+.tab-content .top-part .left i {
+  color: white;
+}
+
+.tab-content .top-part .left button {
+  background-color: #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  transition: 0.3s all linear;
+}
+
+.tab-content .top-part .left button:hover {
+  background-color: #0a2a70;
+  border: 1px solid #0a2a70;
+  box-shadow: 0 0 5px #0a2a70;
+}
+
+.reminders-list .reminder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bolder;
+  transition: 0.3s all linear;
+}
+
+.high {
+  background-color: white;
+  border: 1px solid #9f0712;
+  box-shadow: 0 0 5px inset #9f0712;
+}
+
+.high:hover {
+  background-color: #ffe2e2;
+  box-shadow: 0 0 0px inset #9f0712;
+}
+
+.medium {
+  background-color: white;
+  border: 1px solid #894b00;
+  box-shadow: 0 0 5px inset #894b00;
+}
+
+.medium:hover {
+  background-color: #fef9c2;
+  box-shadow: 0 0 0px inset #894b00;
+}
+
+.low {
+  background-color: white;
+  border: 1px solid #00a63e;
+  box-shadow: 0 0 5px inset #00a63e;
+}
+
+.low:hover {
+  background-color: #dcfce7;
+  box-shadow: 0 0 0px inset #00a63e;
+}
+
+.reminders-list .reminder p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.reminders-list .reminder .trash-can {
+  cursor: pointer;
+}
+
+.reminders-list .reminder .trash-can:hover {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: translate(-0.5px, -0.5px);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85% {
+    transform: translate(0.5px, 0.5px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

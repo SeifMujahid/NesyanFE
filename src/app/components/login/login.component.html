@@ -1,1 +1,65 @@
-<p>login works!</p>
+<!-- ---------------------------------------------------------------------------- -->
+<!-- login section  -->
+<!-- ---------------------------------------------------------------------------- -->
+<section class="login-section">
+  <div class="login-container">
+    <h1>Login</h1>
+    <div class="image w-25 h-25">
+      <img src="./assets/images/Nesyan.png" alt="logo" class="w-100" />
+    </div>
+    <p class="welcome">Welcome Back</p>
+    <p>Sign in to your Nesyan account</p>
+    <div class="login-form w-100">
+      <form
+        class="d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+      >
+        <div class="input-group d-flex flex-column w-100">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            required
+          />
+        </div>
+        <div class="input-group d-flex flex-column w-100">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Your Password"
+            required
+          />
+        </div>
+        <div
+          class="add-ons d-flex justify-content-between align-items-center w-100 mt-2"
+        >
+          <div class="add-ons-checkbox">
+            <input
+              type="checkbox"
+              name="remember-me"
+              id="remember-me"
+              class="checkbox"
+              role="button"
+            />
+            <label role="button" for="remember-me" class="ps-1"
+              >Remember me</label
+            >
+          </div>
+          <a routerLink="/auth/forget-password" role="button"
+            >Forgot Password?</a
+          >
+        </div>
+        <button type="submit" routerLink="#">Login</button>
+      </form>
+    </div>
+    <div class="register-link">
+      <p>
+        Don't have an account?
+        <a routerLink="/auth/register" role="button"> Register Here</a>
+      </p>
+    </div>
+  </div>
+</section>

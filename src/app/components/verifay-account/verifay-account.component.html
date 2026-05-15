@@ -1,0 +1,36 @@
+<!-- ---------------------------------------------------------------------------- -->
+<!-- verifay-account section  -->
+<!-- ---------------------------------------------------------------------------- -->
+<section class="verifay-account-section">
+  <div class="verifay-account-container">
+    <h3>Verifay Your Account</h3>
+    <div class="image w-25 h-25">
+      <img src="./assets/images/Nesyan.png" alt="logo" class="w-100" />
+    </div>
+    <p>Check Your Registered Email</p>
+    <div class="verifay-account-form w-100">
+      <form
+        class="d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+        [formGroup]="verifay"
+      >
+        <div class="input-group d-flex flex-column w-100">
+          <label for="code">Code</label>
+          <input
+            formControlName="code"
+            type="text"
+            id="code"
+            name="code"
+            placeholder="Your code"
+            required
+          />
+        </div>
+        <div
+          class="navigate buttons w-100 d-flex justify-content-start align-items-center"
+        >
+          <button class="back" routerLink="/auth/register">Back</button>
+          <button class="login" (click)="verifayAccount()">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

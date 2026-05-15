@@ -1,1 +1,60 @@
-<p>stage-management works!</p>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- stage-management -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+>
+  <div
+    class="top-part d-flex flex-column justify-content-start align-items-start w-100"
+  >
+    <p class="p-0 m-0 fw-bold fs-5">
+      <i class="fa-solid fa-pills me-1 fs-4" style="color: #155dfc"></i>
+      Stage Management
+    </p>
+    <p class="text-muted m-0 p-0">Update patient's stage</p>
+  </div>
+  <div class="w-100">
+    <div class="current">
+      <p class="m-0 p-0 fw-bold">Current Stage</p>
+      <div class="stage-2 d-flex justify-content-start align-items-center mt-2">
+        <span>Stage 2: Middle/Moderate </span>
+      </div>
+    </div>
+    <div class="new-stage mt-2">
+      <p class="m-0 p-0 fw-bold">Update To Stage</p>
+      <div class="dropdown-center w-100 mt-2">
+        <button
+          class="btn dropdown-toggle w-100 text-start fw-bold bg-primary-subtle text-dark border-1 justify-content-between"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Select New Stage
+        </button>
+        <ul class="dropdown-menu w-100 bg-body-secondary px-2 rounded">
+          <li>
+            <div
+              class="stage-1 d-flex justify-content-start align-items-center mt-2"
+            >
+              <span>Stage 1: Early/Mild</span>
+            </div>
+          </li>
+          <li>
+            <div
+              class="stage-2 d-flex justify-content-start align-items-center mt-2"
+            >
+              <span>Stage 2: Middle/Moderate</span>
+            </div>
+          </li>
+          <li>
+            <div
+              class="stage-3 d-flex justify-content-start align-items-center mt-2"
+            >
+              <span>Stage 3: Late/Severe</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

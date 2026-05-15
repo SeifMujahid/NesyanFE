@@ -1,0 +1,189 @@
+/* --------------------------------------------------------------------------------- */
+/* hero section */
+/* --------------------------------------------------------------------------------- */
+.hero-section {
+  height: calc(100vh - 72px);
+  background-color: #dbeafe;
+  margin-top: 72px;
+  z-index: 888;
+}
+
+.hero-section .logo img {
+  width: 150px;
+  height: auto;
+}
+
+.hero-section h1 {
+  color: #155dfc;
+}
+
+.hero-section p {
+  color: #4a5565;
+}
+
+.hero-section .stores a {
+  text-decoration: none;
+  color: white;
+}
+
+.hero-section .stores .appel {
+  background-color: black;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.3s linear;
+}
+.hero-section .stores .andorid {
+  background-color: #00a63e;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.3s linear;
+}
+.hero-section .stores .appel:hover {
+  box-shadow: 0 0 5px black;
+}
+
+.hero-section .stores .andorid:hover {
+  box-shadow: 0 0 5px #00a63e;
+}
+
+/* --------------------------------------------------------------------------------- */
+/* featurs section  */
+/* --------------------------------------------------------------------------------- */
+
+.featurs-section {
+  height: calc(100vh - 72px);
+  background-color: white;
+  z-index: 777;
+}
+
+.featurs-section .feature-question {
+  text-align: center;
+  color: #155dfc;
+  padding: 32px 0px 16px 0px;
+}
+
+.featurs-section .feature-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.featurs-section .feature-cards .feature-card {
+  width: calc(80% / 3);
+  border-radius: 8px;
+  background-color: #dbeafe;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 5px #155dfc;
+  transition: all 0.3s linear;
+}
+
+.featurs-section .feature-cards .feature-card:hover {
+  box-shadow: 0 0 10px #155dfc;
+  transform: translateY(-5px);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
+}
+
+.featurs-section .feature-cards .feature-card h4,
+.featurs-section .feature-cards .feature-card p {
+  color: #4a5565;
+}
+
+/* --------------------------------------------------------------------------------- */
+/* about section  */
+/* --------------------------------------------------------------------------------- */
+.about-section {
+  height: calc(100vh - 72px);
+  background-color: #dbeafe;
+  z-index: 666;
+}
+
+.about-section .about-question {
+  text-align: center;
+  color: #155dfc;
+  padding: 32px 0px 16px 0px;
+}
+
+.about-section .content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-section .content p {
+  color: #4a5565;
+}
+.about-section .content h4 {
+  color: #155dfc;
+}
+
+.about-section .content .stage {
+  padding-left: 16px;
+  border-left: 3px solid #155dfc;
+}
+
+.about-section .content .stage-1 {
+  width: fit-content;
+  background-color: #dbeafe;
+  color: #155dfc;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+
+.about-section .content .stage-2 {
+  width: fit-content;
+  background-color: #dcfce7;
+  color: #016630;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+
+.about-section .content .stage-3 {
+  width: fit-content;
+  background-color: #f3e8ff;
+  color: #6e11b0;
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+
+/* --------------------------------------------------------------------------------- */
+/* hint section  */
+/* --------------------------------------------------------------------------------- */
+
+.hint-section {
+  background-color: #dbeafe;
+  z-index: 555;
+  padding-bottom: 64px;
+}
+
+.hint-section .data {
+  background: linear-gradient(135deg, #155dfc 0%, #00a63e 100%);
+  color: white;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 16px 8px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+}
+/* --------------------------------------------------------------------------------- */
+/* footer  */
+/* --------------------------------------------------------------------------------- */
+footer {
+  background-color: #101828;
+  color: white;
+}
+footer p {
+  text-align: center;
+  padding: 8px 16px;
+  margin: 0px;
+}

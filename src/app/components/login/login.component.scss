@@ -1,0 +1,92 @@
+/* ---------------------------------------------------------------------------------- */
+/* login section */
+/* ---------------------------------------------------------------------------------- */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dbeafe;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.login-container {
+  width: 400px;
+  padding: 16px 32px 0px;
+  background-color: white;
+  box-shadow: 0 0 5px #155dfc;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    color: #155dfc;
+  }
+  .welcome {
+    color: #155dfc;
+    font-weight: 500;
+    margin: 0px;
+    margin-top: 10px;
+  }
+  p {
+    color: #4a5565;
+  }
+}
+
+.login-form .input-group {
+  label {
+    margin-bottom: 2px;
+    color: #4a5565;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  input {
+    border-radius: 8px !important;
+    padding: 6px 12px;
+    background-color: #f3f3f5;
+    outline: none;
+    border: 1px solid rgb(21, 93, 252, 0.5);
+    box-shadow: 0 0 3px rgb(21, 93, 252, 0.5);
+    transition: all 0.3s linear;
+    &:focus {
+      border: 1px solid rgb(21, 93, 252);
+      box-shadow: 0 0 5px rgb(21, 93, 252);
+    }
+  }
+}
+
+.login-form .input-group .login-form .add-ons input[type="checkbox"] {
+  box-shadow: 0 0 5px rgb(21, 93, 252, 0.5);
+  margin-right: 3px;
+}
+
+.login-form .add-ons a {
+  text-decoration: none;
+  color: #155dfc;
+  font-weight: 600;
+}
+
+.login-form button {
+  background: linear-gradient(135deg, #155dfc 0%, #00a63e 100%);
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(21, 93, 252, 0.5);
+  box-shadow: 0 0 3px rgb(21, 93, 252, 0.5);
+  padding: 6px 12px;
+  margin: 10px 0px;
+  transition: all 0.3s linear;
+}
+
+.login-form button:hover {
+  border: 1px solid rgb(21, 93, 252);
+  box-shadow: 0 0 5px rgb(21, 93, 252);
+}
+
+.register-link a {
+  text-decoration: none;
+  color: #155dfc;
+  font-weight: 600;
+}

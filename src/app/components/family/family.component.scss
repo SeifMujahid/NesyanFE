@@ -1,0 +1,103 @@
+.tab-content {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.tab-content .top-part {
+  padding: 8px 0px;
+}
+
+.tab-content .top-part .right p i {
+  color: #f54900;
+}
+
+.tab-content .top-part .left i {
+  color: white;
+}
+
+.tab-content .top-part .left button {
+  background-color: #f54900;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #f54900;
+  box-shadow: 0 0 5px #f54900;
+  transition: 0.3s all linear;
+}
+
+.tab-content .top-part .left button:hover {
+  background-color: #b33804;
+  border: 1px solid #b33804;
+  box-shadow: 0 0 5px #b33804;
+}
+
+.family-list .family-member {
+  width: 49%;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bolder;
+  background-color: white;
+  border: 1px solid #f54900;
+  box-shadow: 0 0 5px #f54900 inset;
+  transition: 0.3s all linear;
+}
+
+.family-list .family-member:hover {
+  background-color: #eeaf94;
+  border: 1px solid #f54900;
+  box-shadow: 0 0 0px #f54900 inset;
+}
+
+.family-list .family-member p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.family-list .family-member .trash-can {
+  cursor: pointer;
+}
+
+.family-list .family-member .trash-can:hover {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: translate(-0.5px, -0.5px);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85% {
+    transform: translate(0.5px, 0.5px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

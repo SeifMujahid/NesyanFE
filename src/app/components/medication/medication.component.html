@@ -1,1 +1,343 @@
-<p>medication works!</p>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- medicication -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+>
+  <div class="top-part d-flex justify-content-between align-items-center w-100">
+    <div class="right">
+      <p class="p-0 m-0 fw-bold fs-5">
+        <i class="fa-solid fa-pills me-1 fs-4" style="color: #00a63e"></i>
+        Medications
+      </p>
+      <p class="text-muted m-0 p-0">Manage patient medications</p>
+    </div>
+    <div class="left">
+      <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+        <i class="fa-regular fa-square-plus me-1 fs-5"></i>Add Medication
+      </button>
+    </div>
+  </div>
+  <div
+    class="medications-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+  >
+    <div class="medicine">
+      <div class="text-muted">
+        <p>Donepezil</p>
+        <p>10 mg - Once daily</p>
+      </div>
+      <div class="trash-can">
+        <i class="fa-solid fa-trash-can fs-5 text-danger "></i>
+      </div>
+    </div>
+    <div class="medicine">
+      <div class="text-muted">
+        <p>Memantine</p>
+        <p>25 mg - Twice daily</p>
+      </div>
+      <div class="trash-can">
+        <i class="fa-solid fa-trash-can fs-5 text-danger "></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- add-medicine -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          Add New Medication
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <div class="form-container">
+          <form class="fw-bold">
+            <div class="form-group mb-2">
+              <label for="medication-name" class="form-label"
+                >Medication Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="medication-name"
+                required
+                placeholder="e.g.. Donepezil"
+              />
+            </div>
+            <div class="form-group mb-2">
+              <label for="medication-dosage" class="form-label">Dosage</label>
+              <input
+                type="text"
+                class="form-control"
+                id="medication-dosage"
+                required
+                placeholder="e.g.. 10 mg"
+              />
+            </div>
+            <div class="form-group mb-2">
+              <label for="medication-frequency" class="form-label"
+                >Frequency</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="medication-frequency"
+                required
+                placeholder="e.g.. Once daily"
+              />
+            </div>
+            <div class="form-group mb-2">
+              <p class="form-label">Medication Time</p>
+              <div class="d-flex flex-column justify-content-center gap-3">
+                <div
+                  class="d-flex justify-content-center align-items-center gap-3"
+                >
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="08"
+                      value="08:00"
+                      class="me-2"
+                    />
+                    <label for="08">08:00</label>
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="10"
+                      value="10:00"
+                      class="me-2"
+                    />
+                    <label for="10">10:00</label>
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="12"
+                      value="12:00"
+                      class="me-2"
+                    />
+                    <label for="12">12:00</label>
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="14"
+                      value="14:00"
+                      class="me-2"
+                    />
+                    <label for="14">14:00</label>
+                  </div>
+                </div>
+                <div
+                  class="d-flex justify-content-center align-items-center gap-3"
+                >
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="16"
+                      value="16:00"
+                      class="me-2"
+                    />
+                    <label for="16">16:00</label>
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="18"
+                      value="18:00"
+                      class="me-2"
+                    />
+                    <label for="18">18:00</label>
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="20"
+                      value="20:00"
+                      class="me-2"
+                    />
+                    <label for="20">20:00</label>
+                  </div>
+                  <div
+                    class="px-3 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="radio"
+                      name="medication-time"
+                      id="22"
+                      value="22:00"
+                      class="me-2"
+                    />
+                    <label for="22">22:00</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-2">
+              <p class="form-label">Days of week</p>
+              <div class="d-flex flex-column justify-content-center gap-3">
+                <div
+                  class="d-flex justify-content-center align-items-center gap-3"
+                >
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="sat"
+                      value="sat"
+                      class="me-2"
+                    />
+                    <label for="sat">Saturday</label>
+                  </div>
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="sun"
+                      value="sun"
+                      class="me-2"
+                    />
+                    <label for="sun">Sunday</label>
+                  </div>
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="mon"
+                      value="mon"
+                      class="me-2"
+                    />
+                    <label for="mon">Monday</label>
+                  </div>
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="tue"
+                      value="tue"
+                      class="me-2"
+                    />
+                    <label for="tue">Tuesday</label>
+                  </div>
+                </div>
+                <div
+                  class="d-flex justify-content-center align-items-center gap-3"
+                >
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="wed"
+                      value="wed"
+                      class="me-2"
+                    />
+                    <label for="wed">Wednesday</label>
+                  </div>
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="thu"
+                      value="thu"
+                      class="me-2"
+                    />
+                    <label for="thu">Thursday</label>
+                  </div>
+                  <div
+                    class="px-2 py-2 rounded-2"
+                    style="background-color: #dbeafe"
+                  >
+                    <input
+                      type="checkbox"
+                      name="medication-days"
+                      id="fri"
+                      value="fri"
+                      class="me-2"
+                    />
+                    <label for="fri">Friday</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb2">
+              <label for="medication-notes" class="form-label">Notes</label>
+              <textarea
+                style="resize: none"
+                class="form-control"
+                id="medication-notes"
+                rows="2"
+                placeholder="Additional instructions or information about the medication"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

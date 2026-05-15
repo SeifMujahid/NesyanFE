@@ -1,2 +1,127 @@
-<p>relative works!</p>
-<router-outlet></router-outlet>
+<app-main-nav></app-main-nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-between align-items-start gap-4"
+>
+  <div
+    class="patient-container w-25 d-flex flex-column justify-content-center align-items-center gap-3"
+  >
+    <div class="top-part d-flex flex-column justify-content-center gap-2">
+      <a routerLink="#" class="requests-btn btn btn-primary">
+        <i class="fa-solid fa-paper-plane me-1"></i>
+        <span>Send Treatment Request</span>
+      </a>
+      <a routerLink="#" class="requests-btn btn btn-primary">
+        <i class="fa-solid fa-hand-holding-medical me-1"></i>
+        <span>Request Care Giver</span>
+      </a>
+      <a routerLink="#" class="new-account-btn btn btn-primary">
+        <i class="fa-solid fa-plus me-1"></i>
+        <span>Create Patient Account</span>
+      </a>
+      <a routerLink="#" class="new-account-btn btn btn-primary">
+        <i class="fa-solid fa-users-gear me-1"></i>
+        <span>Control Patient's List</span>
+      </a>
+    </div>
+    <div
+      class="mid-part w-100 d-flex justify-content-between align-items-center fs-5 fw-medium text-primary border-bottom border-top border-primary py-2"
+    >
+      <div>
+        <i class="fa-solid fa-people-roof me-1"></i>
+        <span>My Patients</span>
+      </div>
+      <span>3</span>
+    </div>
+    <div
+      class="patient-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+    >
+      <div class="patient active">
+        <p>Mohamed Ahmed</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Age:61</span>
+          <span class="stage2">Stage 2</span>
+        </div>
+      </div>
+      <div class="patient">
+        <p>Sarah Ali</p>
+        <div>
+          <span>Age:72</span>
+          <span class="stage3">Stage 3</span>
+        </div>
+      </div>
+      <div class="patient">
+        <p>Pep Guardiola</p>
+        <div>
+          <span>Age:55</span>
+          <span class="stage2">Stage 2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="patient-details w-75 d-flex flex-column justify-content-center align-items-center gap-3"
+  >
+    <div
+      class="patient-bar d-flex justify-content-between align-items-center w-100"
+    >
+      <div>
+        <p class="m-0">Mohamed Ahmed</p>
+        <div>
+          <span>Age:61</span>
+          <span> - Last Visit: 2024-01-15</span>
+        </div>
+      </div>
+      <a routerLink="#" class="requests-btn btn btn-primary">
+        <i class="fa-solid fa-address-card me-1"></i>
+        <span>View patient's Profile</span>
+      </a>
+      <span class="stage-2">Stage 2: Middle/Moderate</span>
+    </div>
+    <div class="tabs-list w-100">
+      <ul
+        class="d-flex justify-content-between align-items-center m-0 p-0 list-unstyled"
+      >
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/reminders"
+            >Reminders</a
+          >
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/daily-tasks"
+            >Daily Tasks</a
+          >
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/medication"
+            >Medication</a
+          >
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/appointments"
+            >Appointments</a
+          >
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/family">Family</a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/location"
+            >Location</a
+          >
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/relative/statistics"
+            >Statistics</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- routing here -->
+    <div class="w-100">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

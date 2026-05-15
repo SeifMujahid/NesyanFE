@@ -1,0 +1,133 @@
+.tab-content {
+  background-color: white;
+  border: 1px solid #155dfc;
+  box-shadow: 0 0 5px #155dfc;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.tab-content .top-part {
+  padding: 8px 0px;
+}
+
+.tab-content .top-part .right p i {
+  color: #00a63e;
+}
+
+.tab-content .top-part .left i {
+  color: white;
+}
+
+.tab-content .top-part .left button {
+  background-color: #00a63e;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #00a63e;
+  box-shadow: 0 0 5px #00a63e;
+  transition: 0.3s all linear;
+}
+
+.tab-content .top-part .left button:hover {
+  background-color: #016630;
+  border: 1px solid #016630;
+  box-shadow: 0 0 5px #016630;
+}
+
+.tasks-list .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #00a63e;
+  box-shadow: 0 0 5px inset #00a63e;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bolder;
+  transition: 0.3s all linear;
+}
+
+.tasks-list .task:hover {
+  background-color: #dcfce7;
+  box-shadow: 0 0 0px #00a63e inset;
+}
+
+.tasks-list .task p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tasks-list .task.done {
+  cursor: not-allowed;
+  background-color: #f0fdf4;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px inset #ccc;
+  transition: 0.3s all linear;
+}
+
+.tasks-list .task.done:hover {
+  background-color: #f0fdf4;
+  box-shadow: 0 0 5px #ccc inset;
+}
+
+.tasks-list .task.done p {
+  position: relative;
+}
+
+.tasks-list .task.done p::before {
+  content: "";
+  width: 120%;
+  height: 2px;
+  background-color: rgb(0, 0, 0, 0.6);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tasks-list .task .trash-can {
+  cursor: pointer;
+}
+
+.tasks-list .task .trash-can:hover {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: translate(-0.5px, -0.5px);
+  }
+
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85% {
+    transform: translate(0.5px, 0.5px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

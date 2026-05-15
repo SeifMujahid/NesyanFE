@@ -1,1 +1,803 @@
-<p>register works!</p>
+<section class="register-section">
+  <div class="register-container">
+    <div class="head">
+      <h1>Create Account</h1>
+      <div class="image">
+        <img src="./assets/images/Nesyan.png" alt="logo" />
+      </div>
+      <p>Complete all steps to join Nesyan</p>
+      <div
+        class="step-indicator d-flex justify-content-between align-items-center w-50 my-3"
+      >
+        <div
+          class="step1"
+          [class.active-step]="currentStep === 1"
+          [class.completed-step]="currentStep > 1"
+        >
+          1
+        </div>
+        <div
+          class="step2"
+          [class.active-step]="currentStep === 2"
+          [class.completed-step]="currentStep > 2"
+        >
+          2
+        </div>
+        <div class="step3" [class.active-step]="currentStep === 3">3</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step1-container" [hidden]="currentStep !== 1">
+        <div class="form-container w-100">
+          <h5>Personal Information</h5>
+          <form
+            [formGroup]="personalInformation"
+            class="d-flex flex-column justify-content-center w-100"
+          >
+            <div
+              class="form-top d-flex justify-content-between align-items-center w-100"
+            >
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter your first name"
+                  formControlName="fName"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Enter your last name"
+                  formControlName="lName"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-middel w-100">
+              <div class="form-group">
+                <label for="userName">User Name</label>
+                <input
+                  type="text"
+                  id="userName"
+                  name="userName"
+                  placeholder="Enter your user name"
+                  formControlName="userName"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="nationalId">National ID</label>
+                <input
+                  type="text"
+                  id="nationalId"
+                  name="nationalId"
+                  placeholder="Enter your national ID"
+                  formControlName="nationalId"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select
+                  id="gender"
+                  name="gender"
+                  formControlName="gender"
+                  required
+                >
+                  <option value="" disabled selected hidden>
+                    Select your gender
+                  </option>
+                  <option value="0">Male</option>
+                  <option value="1">Female</option>
+                </select>
+              </div>
+            </div>
+            <div
+              class="form-bottom d-flex justify-content-between align-items-center w-100"
+            >
+              <div class="form-group">
+                <label for="country">Country</label>
+                <select
+                  id="country"
+                  name="country"
+                  formControlName="country"
+                  required
+                >
+                  <option value="" disabled selected hidden>
+                    Select your country
+                  </option>
+                  <option value="egypt">Egypt</option>
+                  <option value="saudi-arabia">Saudi Arabia</option>
+                  <option value="kuwait">Kuwait</option>
+                  <option value="qatar">Qatar</option>
+                  <option value="uae">United Arab Emirates</option>
+                  <option value="algeria">Algeria</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input
+                  id="city"
+                  type="text"
+                  name="city"
+                  placeholder="Enter your city"
+                  formControlName="city"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="step2-container" [hidden]="currentStep !== 2">
+        <div class="form-container w-100">
+          <h5>Account Details</h5>
+          <div class="form-container w-100">
+            <form [formGroup]="accountDetails">
+              <div class="form-group w-100">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  required
+                  formControlName="email"
+                />
+              </div>
+              <div class="form-group w-100">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Enter your password"
+                  required
+                  formControlName="password"
+                />
+              </div>
+              <div class="form-group w-100">
+                <label for="age">Age</label>
+                <input
+                  type="number"
+                  name="age"
+                  id="age"
+                  placeholder="Enter your age"
+                  required
+                  formControlName="age"
+                />
+              </div>
+              <div class="form-group w-100">
+                <p>Register as</p>
+                <ul
+                  class="w-100 m-0 p-0 d-flex justify-content-evenly align-items-center"
+                >
+                  <li [class.selected]="selectedRole === 'patient'">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="patient"
+                      value="patient"
+                      (change)="onRoleSelect('patient')"
+                    />
+                    <label for="patient">Patient</label>
+                  </li>
+                  <li [class.selected]="selectedRole === 'doctor'">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="doctor"
+                      value="doctor"
+                      (change)="onRoleSelect('doctor')"
+                    />
+                    <label for="doctor">Doctor</label>
+                  </li>
+                  <li [class.selected]="selectedRole === 'relative'">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="relative"
+                      value="relative"
+                      (change)="onRoleSelect('relative')"
+                    />
+                    <label for="relative">Relative</label>
+                  </li>
+                  <li [class.selected]="selectedRole === 'caregiver'">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="caregiver"
+                      value="caregiver"
+                      (change)="onRoleSelect('caregiver')"
+                    />
+                    <label for="caregiver">Caregiver</label>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="step3-conatiner" [hidden]="currentStep !== 3">
+        <div class="caregiver" [hidden]="selectedRole !== 'caregiver'">
+          <div class="form-container w-100">
+            <h5>Professional Information</h5>
+            <div class="form-container w-100">
+              <p>Upload Certification</p>
+              <form class="d-flex flex-column align-items-center w-100">
+                <div
+                  class="upload-area d-flex flex-column justify-content-center align-items-center w-100 my-2"
+                  (dragover)="onDragOver($event)"
+                  (dragleave)="onDragLeave()"
+                  (drop)="onDrop($event, 'degree')"
+                  [class.dragover]="isDragOver"
+                >
+                  <!-- No File Selected -->
+                  <div *ngIf="!degreeFileCaregiver" class="text-center">
+                    <i class="fa-solid fa-cloud-arrow-up fs-1 mb-2"></i>
+                    <p>Click to upload or drag and drop</p>
+                    <p class="m-0">PDF, JPG, PNG (MAX. 5MB)</p>
+                    <div class="form-group mt-4">
+                      <label for="degree1" class="btn btn-primary text-white">
+                        Select File
+                      </label>
+                      <input
+                        type="file"
+                        id="degree1"
+                        hidden
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        (change)="onFileSelect($event, 'degree')"
+                      />
+                    </div>
+                  </div>
+                  <!-- File Selected -->
+                  <div *ngIf="degreeFileCaregiver" class="text-center">
+                    <i class="fa-solid fa-file fs-1 mb-2 text-success"></i>
+                    <p class="fw-bold">
+                      {{ degreeFileCaregiver.name }}
+                    </p>
+                    <p>
+                      {{ (degreeFileCaregiver.size / 1024 / 1024).toFixed(2) }}
+                      MB
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="removeFile('degree', $event)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="note w-100 my-2 bg-primary-subtle py-2 px-1 rounded"
+                >
+                  <p class="text-primary fw-bold fs-5 text-center">
+                    Your certificat will be verified by our team before you can
+                    access the full platform.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="doctor" [hidden]="selectedRole !== 'doctor'">
+          <div class="form-container w-100">
+            <h5>Professional Information</h5>
+            <div class="form-container w-100">
+              <form class="d-flex flex-column align-items-center w-100">
+                <!-- Graduation Degree -->
+                <p>Upload Graduation Degree</p>
+                <div
+                  class="upload-area d-flex flex-column justify-content-center align-items-center w-100 my-2"
+                  (dragover)="onDragOver($event)"
+                  (dragleave)="onDragLeave()"
+                  (drop)="onDrop($event, 'degree')"
+                  [class.dragover]="isDragOver"
+                >
+                  <!-- No File Selected -->
+                  <div *ngIf="!degreeFileDoctor" class="text-center">
+                    <i class="fa-solid fa-cloud-arrow-up fs-1 mb-2"></i>
+                    <p>Click to upload or drag and drop</p>
+                    <p class="m-0">PDF, JPG, PNG (MAX. 5MB)</p>
+                    <div class="form-group mt-4">
+                      <label for="degree1" class="btn btn-primary text-white">
+                        Select File
+                      </label>
+                      <input
+                        type="file"
+                        id="degree1"
+                        hidden
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        (change)="onFileSelect($event, 'degree')"
+                      />
+                    </div>
+                  </div>
+                  <!-- File Selected -->
+                  <div *ngIf="degreeFileDoctor" class="text-center">
+                    <i class="fa-solid fa-file fs-1 mb-2 text-success"></i>
+                    <p class="fw-bold">
+                      {{ degreeFileDoctor.name }}
+                    </p>
+                    <p>
+                      {{ (degreeFileDoctor.size / 1024 / 1024).toFixed(2) }}
+                      MB
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="removeFile('degree', $event)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                <!-- Medical Association Card -->
+                <p>Upload Medical Association Card</p>
+                <div
+                  class="upload-area d-flex flex-column justify-content-center align-items-center w-100 my-2"
+                  (dragover)="onDragOver($event)"
+                  (dragleave)="onDragLeave()"
+                  (drop)="onDrop($event, 'card')"
+                  [class.dragover]="isDragOver"
+                >
+                  <!-- No File Selected -->
+                  <div *ngIf="!cardFileDoctor" class="text-center">
+                    <i class="fa-solid fa-cloud-arrow-up fs-1 mb-2"></i>
+                    <p>Click to upload or drag and drop</p>
+                    <p class="m-0">PDF, JPG, PNG (MAX. 5MB)</p>
+                    <div class="form-group mt-4">
+                      <label for="degree2" class="btn btn-primary text-white">
+                        Select File
+                      </label>
+                      <input
+                        type="file"
+                        id="degree2"
+                        hidden
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        (change)="onFileSelect($event, 'card')"
+                      />
+                    </div>
+                  </div>
+                  <!-- File Selected -->
+                  <div *ngIf="cardFileDoctor" class="text-center">
+                    <i class="fa-solid fa-file fs-1 mb-2 text-success"></i>
+                    <p class="fw-bold">
+                      {{ cardFileDoctor.name }}
+                    </p>
+                    <p>
+                      {{ (cardFileDoctor.size / 1024 / 1024).toFixed(2) }}
+                      MB
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="removeFile('card', $event)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="patient" [hidden]="selectedRole !== 'patient'">
+          <div class="form-container w-100">
+            <h5>Medical History</h5>
+            <div class="form-container w-100">
+              <form [formGroup]="patientMedicalHistory">
+                <div class="form-top">
+                  <div
+                    class="w-100 d-flex justify-content-between align-content-center gap-2"
+                  >
+                    <div class="form-group">
+                      <label for="height">Height(cm)</label>
+                      <input
+                        type="number"
+                        name="height"
+                        id="height"
+                        placeholder="e.g. 170"
+                        required
+                        formControlName="height"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="weight">Weight(kg)</label>
+                      <input
+                        type="number"
+                        name="weight"
+                        id="weight"
+                        placeholder="e.g. 70"
+                        required
+                        formControlName="weight"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="bloodType">Blood Type</label>
+                      <select
+                        name="bloodtype"
+                        id="bloodType"
+                        required
+                        formControlName="bloodType"
+                      >
+                        <option value="" disabled selected hidden>
+                          eg. A+
+                        </option>
+                        <option value="0">A-</option>
+                        <option value="1">A+</option>
+                        <option value="2">B+</option>
+                        <option value="3">B-</option>
+                        <option value="4">AB+</option>
+                        <option value="5">AB-</option>
+                        <option value="6">O+</option>
+                        <option value="7">O-</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <p>Chronic Diseases</p>
+                    <div
+                      class="d-flex flex-wrap justify-content-between align-content-center checkboxes-group"
+                    >
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="bloodpressure"
+                          value="bloodpressure"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'bloodpressure')
+                          "
+                        />
+                        <label for="bloodpressure">Blood pressure</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="diabetes"
+                          value="diabetes"
+                          (change)="onChronicDiseaseSelect($event, 'diabetes')"
+                        />
+                        <label for="diabetes">Diabetes</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="asthma"
+                          value="asthma"
+                          (change)="onChronicDiseaseSelect($event, 'asthma')"
+                        />
+                        <label for="asthma">Asthma</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="heartdisease"
+                          value="heartdisease"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'heartdisease')
+                          "
+                        />
+                        <label for="heartdisease">Heart disease</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="chestallergies"
+                          value="chestallergies"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'chestallergies')
+                          "
+                        />
+                        <label for="chestallergies">Chest allergies</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="kidneydiseases"
+                          value="kidneydiseases"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'kidneydiseases')
+                          "
+                        />
+                        <label for="kidneydiseases">Kidney diseases</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="liverdiseases"
+                          value="liverdiseases"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'liverdiseases')
+                          "
+                        />
+                        <label for="liverdiseases">Liver diseases</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="immunediseases"
+                          value="immunediseases"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'immunediseases')
+                          "
+                        />
+                        <label for="immunediseases">Immune diseases</label>
+                      </div>
+                      <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="otherdiseases"
+                          value="otherdiseases"
+                          (change)="
+                            onChronicDiseaseSelect($event, 'otherdiseases')
+                          "
+                        />
+                        <label for="otherdiseases">Other</label>
+                      </div>
+                      <!-- <div class="check-group">
+                        <input
+                          type="checkbox"
+                          name="chronicdiseases"
+                          id="nodiseases"
+                          value="nodiseases"
+                          formControlName="chronicDisease"
+                        />
+                        <label for="nodiseases">No diseases</label>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="form-middel">
+                  <p class="mb-2">Alzheimer's Stage (Managed by Doctor)</p>
+                  <div>
+                    <ul>
+                      <li class="selected">
+                        <input
+                          type="radio"
+                          name="alzheimerstage"
+                          id="stage1"
+                          disabled
+                          checked
+                        />
+                        <label for="stage1"
+                          >Stage 1 - Early/Mild (Default)</label
+                        >
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          name="alzheimerstage"
+                          id="stage2"
+                          disabled
+                        />
+                        <label for="stage2"
+                          >Stage 2 - Middle/Moderate (Doctor Only)</label
+                        >
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          name="alzheimerstage"
+                          id="stage3"
+                          disabled
+                        />
+                        <label for="stage3"
+                          >Stage 3 - Late/Severe (Doctor Only)</label
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- <h5 class="mt-2">Alzheimer's Condition Assessment</h5>
+                <div
+                  class="form-bottom w-100 d-flex flex-column justify-content-center"
+                >
+                  <div class="select-group w-100">
+                    <label for="q1">Do you experience memory issues?</label>
+                    <select name="q1" id="q1">
+                      <option value="" disabled selected hidden>
+                        Select one
+                      </option>
+                      <option value="never">Never</option>
+                      <option value="sometimes">Sometimes</option>
+                      <option value="often">Often</option>
+                      <option value="always">Always</option>
+                    </select>
+                  </div>
+                  <div class="select-group w-100">
+                    <label for="q2"
+                      >Do you have difficulties with daily tasks?</label
+                    >
+                    <select name="q2" id="q2">
+                      <option value="" disabled selected hidden>
+                        Select one
+                      </option>
+                      <option value="none">No difficulties</option>
+                      <option value="minor">Minor difficulties</option>
+                      <option value="moderate">Moderate difficulties</option>
+                      <option value="severe">Severe difficulties</option>
+                    </select>
+                  </div>
+                  <div class="select-group w-100">
+                    <label for="q3"
+                      >Do you experience confusion about time or place?</label
+                    >
+                    <select name="q3" id="q3">
+                      <option value="" disabled selected hidden>
+                        Select one
+                      </option>
+                      <option value="never">Never</option>
+                      <option value="rarely">Rarely</option>
+                      <option value="sometimes">Sometimes</option>
+                      <option value="frequently">Frequently</option>
+                    </select>
+                  </div>
+                  <div class="select-group w-100">
+                    <label for="q4"
+                      >Do you have trouble finding words or speaking?</label
+                    >
+                    <select name="q4" id="q4">
+                      <option value="" disabled selected hidden>
+                        Select one
+                      </option>
+                      <option value="none">No issues</option>
+                      <option value="occasionally">Occasionally</option>
+                      <option value="frequently">Frequently</option>
+                      <option value="severely">Severe issues</option>
+                    </select>
+                  </div>
+                  <div class="select-group w-100">
+                    <label for="q5"
+                      >Do you notice changes in mood or behavior?</label
+                    >
+                    <select name="q5" id="q5">
+                      <option value="" disabled selected hidden>
+                        Select one
+                      </option>
+                      <option value="none">No changes</option>
+                      <option value="minor">Minor changes</option>
+                      <option value="moderate">Moderate changes</option>
+                      <option value="significant">Significant changes</option>
+                    </select>
+                  </div>
+                  <div class="select-group w-100">
+                    <label for="q6"
+                      >How long have you noticed these symptoms?</label
+                    >
+                    <input
+                      type="text"
+                      name="q6"
+                      id="q6"
+                      placeholder="e.g. 6 months"
+                      required
+                    />
+                  </div>
+                </div> -->
+                <!-- <div
+                  class="note w-100 px-2 py-1 my-3 bg-warning border-1 border-danger rounded"
+                >
+                  <p class="fw-bolder text-black">
+                    This assessment helps your doctor understand your condition
+                    better. Your doctor will conduct a full evaluation and may
+                    adjust your stage if needed.
+                  </p>
+                </div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="relative" [hidden]="selectedRole !== 'relative'">
+          <div class="form-container w-100">
+            <h5>Link to Patient Account</h5>
+            <div class="form-container w-100">
+              <form
+                class="d-flex flex-column align-items-start w-100 justify-content-center"
+              >
+                <div
+                  class="note w-100 px-2 py-1 my-3 bg-warning-subtle border-1 border-danger rounded"
+                >
+                  <p class="fw-bold text-warning">
+                    To link with a patient, you need to provide.
+                  </p>
+                </div>
+                <div class="form-group w-100">
+                  <label for="patient-username">Patient Username</label>
+                  <input
+                    type="text"
+                    id="patient-username"
+                    name="patient-username"
+                    placeholder="Enter patient's username"
+                    required
+                  />
+                </div>
+                <div class="form-group w-100">
+                  <label for="patient-id">Patient ID</label>
+                  <input
+                    type="text"
+                    id="patient-id"
+                    name="patient-id"
+                    placeholder="Patient's Id"
+                    required
+                  />
+                </div>
+                <div class="form-group w-100">
+                  <label for="patient-email">Patient Email</label>
+                  <input
+                    type="email"
+                    id="patient-email"
+                    name="patient-email"
+                    placeholder="Patient's email"
+                    required
+                  />
+                </div>
+                <div class="form-group w-100">
+                  <label for="patient-password">Patient Password</label>
+                  <input
+                    type="password"
+                    id="patient-password"
+                    name="patient-password"
+                    placeholder="Patient's password"
+                    required
+                  />
+                </div>
+                <div
+                  class="note w-100 px-2 py-1 my-3 bg-danger-subtle border-1 border-danger rounded"
+                >
+                  <p class="fw-bold text-danger">
+                    Patient will be notified and must approve this connection.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="navigate buttons w-100 d-flex justify-content-start align-items-center"
+    >
+      <button class="back" (click)="prevStep()">Back</button>
+      <button
+        class="next"
+        (click)="chooseMethod()"
+        [hidden]="
+          currentStep === 3 ||
+          (currentStep === 2 &&
+            (selectedRole === 'relative' || selectedRole === 'caregiver'))
+        "
+      >
+        Next
+      </button>
+      <button
+        class="complete"
+        (click)="chooseMethod()"
+        [hidden]="
+          !(
+            currentStep === 3 ||
+            (currentStep === 2 &&
+              (selectedRole === 'relative' || selectedRole === 'caregiver'))
+          )
+        "
+      >
+        Complete
+      </button>
+    </div>
+  </div>
+</section>
