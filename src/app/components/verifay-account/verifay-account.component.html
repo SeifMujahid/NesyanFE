@@ -27,7 +27,18 @@
         <div
           class="w-100 d-flex justify-content-start align-items-center m-0 p-0"
         >
-          <p class="resend" role="button" (click)="resendCode()">Resend Code</p>
+          <p
+            class="resend"
+            role="button"
+            (click)="resendCode()"
+            [class.disabled]="resendDisabled"
+            [attr.aria-disabled]="resendDisabled"
+          >
+            <span *ngIf="!resendDisabled">Resend Code</span>
+            <span *ngIf="resendDisabled"
+              >Resend Code ({{ getCountdownText() }})</span
+            >
+          </p>
         </div>
         <div
           class="navigate buttons w-100 d-flex justify-content-start align-items-center"

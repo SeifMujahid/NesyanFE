@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -19,7 +19,10 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit, OnDestroy {
+  resendDisabled = false;
+  resendCountdown = 0;
+  countdownInterval: any;
   ressetPasswordData: ResetPasswordInterface = {} as ResetPasswordInterface;
   tempEmail: string = '';
   constructor(
@@ -37,6 +40,12 @@ export class ResetPasswordComponent implements OnInit {
         this.tempEmail = email;
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
   }
 
   resetPasswordForm: FormGroup = new FormGroup({
@@ -74,17 +83,40 @@ export class ResetPasswordComponent implements OnInit {
     }
   }
   resendCode(): void {
+    if (this.resendDisabled) return;
+
     this.authService.forgetPassword({ email: this.tempEmail }).subscribe({
       next: (response) => {
         console.log('Forget password request successful:', response);
         this.showSuccess(response.message);
-        this._router.navigate(['/auth/reset-password']);
+        // this._router.navigate(['/auth/reset-password']);
+        this.startCooldown();
       },
       error: (err) => {
         console.error('Forget password request failed:', err);
         this.showError(err.error.message);
       },
     });
+  }
+
+  startCooldown(): void {
+    this.resendDisabled = true;
+    this.resendCountdown = 300;
+
+    this.countdownInterval = setInterval(() => {
+      this.resendCountdown--;
+
+      if (this.resendCountdown <= 0) {
+        this.resendDisabled = false;
+        clearInterval(this.countdownInterval);
+      }
+    }, 1000);
+  }
+
+  getCountdownText(): string {
+    const minutes = Math.floor(this.resendCountdown / 60);
+    const seconds = this.resendCountdown % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
   showSuccess(message: string) {

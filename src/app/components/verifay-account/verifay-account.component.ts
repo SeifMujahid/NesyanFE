@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './verifay-account.component.html',
   styleUrls: ['./verifay-account.component.scss'],
 })
-export class VerifayAccountComponent implements OnInit {
+export class VerifayAccountComponent implements OnInit, OnDestroy {
   constructor(
     private _authService: AuthService,
     private _mainService: MainService,
@@ -27,8 +27,12 @@ export class VerifayAccountComponent implements OnInit {
   ) {}
   toastr = inject(ToastrService);
 
+  resendDisabled = false;
+  resendCountdown = 0;
+  countdownInterval: any;
   tempEmail: string = '';
   verifayData: VerifayAccountInterface = {} as VerifayAccountInterface;
+
   ngOnInit(): void {
     this._mainService.tempEmail.subscribe({
       next: (email) => {
@@ -36,6 +40,12 @@ export class VerifayAccountComponent implements OnInit {
         this.tempEmail = email;
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
   }
 
   verifay: FormGroup = new FormGroup({
@@ -62,16 +72,39 @@ export class VerifayAccountComponent implements OnInit {
   }
 
   resendCode(): void {
+    if (this.resendDisabled) return;
+
     this._authService.reVerifyEmail({ email: this.tempEmail }).subscribe({
       next: (response) => {
         console.log('Resend code request successful:', response);
         this.showSuccess(response.message);
+        this.startCooldown();
       },
       error: (err) => {
         console.error('Resend code request failed:', err);
         this.showError(err.error.message);
       },
     });
+  }
+
+  startCooldown(): void {
+    this.resendDisabled = true;
+    this.resendCountdown = 300;
+
+    this.countdownInterval = setInterval(() => {
+      this.resendCountdown--;
+
+      if (this.resendCountdown <= 0) {
+        this.resendDisabled = false;
+        clearInterval(this.countdownInterval);
+      }
+    }, 1000);
+  }
+
+  getCountdownText(): string {
+    const minutes = Math.floor(this.resendCountdown / 60);
+    const seconds = this.resendCountdown % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
   showSuccess(message: string) {
