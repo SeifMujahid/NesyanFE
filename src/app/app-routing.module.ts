@@ -1,18 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuardGuard } from './core/guards/auth-guard.guard';
+import { noAuthGuard } from './core/guards/no-auth-guard.guard';
+import { caregiveAuthGuardGuard } from './core/guards/caregive-auth-guard.guard';
+import { patientAuthGuardGuard } from './core/guards/patient-auth-guard.guard';
+import { doctorAuthGuardGuard } from './core/guards/doctor-auth-guard.guard';
+import { relativeAuthGuardGuard } from './core/guards/relative-auth-guard.guard';
 
 const routes: Routes = [
-  //landing routing
-  { path: '', redirectTo: 'nesyan', pathMatch: 'full' },
+  // Landing routing - Protected from authenticated users
+  {
+    path: '',
+    redirectTo: 'nesyan',
+    pathMatch: 'full',
+  },
   {
     path: 'nesyan',
+    canActivate: [noAuthGuard], // Redirect to home if authenticated
     loadComponent: () =>
       import('./components/landing/landing.component').then(
         (m) => m.LandingComponent,
       ),
     title: 'Nesyan',
   },
-  //authentication routing
+
+  // Authentication routing
   {
     path: 'auth',
     loadComponent: () =>
@@ -54,10 +66,20 @@ const routes: Routes = [
           ),
         title: 'Nesyan|Verify Account',
       },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./components/reset-password/reset-password.component').then(
+            (m) => m.ResetPasswordComponent,
+          ),
+        title: 'Nesyan|Reset Password',
+      },
     ],
   },
-  //caregiver routing
+
+  // Caregiver routing
   {
+    canActivate: [caregiveAuthGuardGuard],
     path: 'caregiver',
     loadComponent: () =>
       import('./layouts/caregive/caregive.component').then(
@@ -66,6 +88,7 @@ const routes: Routes = [
     title: 'Nesyan|Caregiver',
   },
   {
+    canActivate: [caregiveAuthGuardGuard],
     path: 'caregiver/my-profile',
     loadComponent: () =>
       import('./components/caregiver-profile/caregiver-profile.component').then(
@@ -73,8 +96,10 @@ const routes: Routes = [
       ),
     title: 'Nesyan|Caregiver Profile',
   },
-  //patient routing
+
+  // Patient routing
   {
+    canActivate: [patientAuthGuardGuard],
     path: 'patient',
     loadComponent: () =>
       import('./layouts/patient/patient.component').then(
@@ -83,6 +108,7 @@ const routes: Routes = [
     title: 'Nesyan|Patient',
   },
   {
+    canActivate: [patientAuthGuardGuard],
     path: 'patient/my-profile',
     loadComponent: () =>
       import('./components/patient-profile/patient-profile.component').then(
@@ -90,8 +116,10 @@ const routes: Routes = [
       ),
     title: 'Nesyan|Patient Profile',
   },
-  //doctor routing
+
+  // Doctor routing
   {
+    canActivate: [doctorAuthGuardGuard],
     path: 'doctor',
     loadComponent: () =>
       import('./layouts/doctor/doctor.component').then(
@@ -135,6 +163,7 @@ const routes: Routes = [
     ],
   },
   {
+    canActivate: [doctorAuthGuardGuard],
     path: 'doctor/my-profile',
     loadComponent: () =>
       import('./components/doctor-profile/doctor-profile.component').then(
@@ -143,6 +172,7 @@ const routes: Routes = [
     title: 'Nesyan|Doctor Profile',
   },
   {
+    canActivate: [doctorAuthGuardGuard],
     path: 'doctor/patient-profile',
     loadComponent: () =>
       import('./components/patient-profile/patient-profile.component').then(
@@ -151,6 +181,7 @@ const routes: Routes = [
     title: 'Nesyan|Patient Profile',
   },
   {
+    canActivate: [doctorAuthGuardGuard],
     path: 'doctor/treatment-requests',
     loadComponent: () =>
       import('./components/treatment-requests/treatment-requests.component').then(
@@ -159,6 +190,7 @@ const routes: Routes = [
     title: 'Nesyan|Treatment Requests',
   },
   {
+    canActivate: [doctorAuthGuardGuard],
     path: 'doctor/manage-patients',
     loadComponent: () =>
       import('./components/manage-patients-list/manage-patients-list.component').then(
@@ -166,8 +198,10 @@ const routes: Routes = [
       ),
     title: 'Nesyan|Manage Patients',
   },
-  //relative routing
+
+  // Relative routing
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative',
     loadComponent: () =>
       import('./layouts/relative/relative.component').then(
@@ -235,6 +269,7 @@ const routes: Routes = [
     ],
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/my-profile',
     loadComponent: () =>
       import('./components/relative-profile/relative-profile.component').then(
@@ -243,6 +278,7 @@ const routes: Routes = [
     title: 'Nesyan|Relative Profile',
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/patient-profile',
     loadComponent: () =>
       import('./components/patient-profile/patient-profile.component').then(
@@ -251,6 +287,7 @@ const routes: Routes = [
     title: 'Nesyan|Patient Profile',
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/manage-patients',
     loadComponent: () =>
       import('./components/manage-patients-list/manage-patients-list.component').then(
@@ -259,6 +296,7 @@ const routes: Routes = [
     title: 'Nesyan|Manage Patients',
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/request-treatment',
     loadComponent: () =>
       import('./components/request-treatment/request-treatment.component').then(
@@ -267,6 +305,7 @@ const routes: Routes = [
     title: 'Nesyan|Request Treatment',
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/request-caregiver',
     loadComponent: () =>
       import('./components/request-caregiver/request-caregiver.component').then(
@@ -275,6 +314,7 @@ const routes: Routes = [
     title: 'Nesyan|Request Caregiver',
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/create-patient-account',
     loadComponent: () =>
       import('./components/create-patient-account/create-patient-account.component').then(
@@ -283,6 +323,7 @@ const routes: Routes = [
     title: 'Nesyan|Create Patient Account',
   },
   {
+    canActivate: [relativeAuthGuardGuard],
     path: 'relative/link-patient-account',
     loadComponent: () =>
       import('./components/link-patient-account/link-patient-account.component').then(
@@ -290,7 +331,8 @@ const routes: Routes = [
       ),
     title: 'Nesyan|Link Patient Account',
   },
-  //rubbish routing
+
+  // Wildcard route - must be last
   { path: '**', redirectTo: 'nesyan', pathMatch: 'full' },
 ];
 

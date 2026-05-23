@@ -13,9 +13,9 @@
     <a routerLink="/patient/my-profile" class="m-2">
       <i class="fa-regular fa-circle-user fs-2"></i>
     </a>
-    <span class="fs-5 fw-medium">Seif Mujahid</span>
+    <span class="fs-5 fw-medium">{{ userName }}</span>
     <a
-      routerLink="/nesyan"
+      (click)="logout()"
       class="d-flex justify-content-center align-items-center btn btn-primary ms-2"
       ><i class="fa-solid fa-arrow-right-from-bracket me-1"></i
       ><span>Logout</span></a

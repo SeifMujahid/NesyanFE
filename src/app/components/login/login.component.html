@@ -12,6 +12,8 @@
     <div class="login-form w-100">
       <form
         class="d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
       >
         <div class="input-group d-flex flex-column w-100">
           <label for="email">Email</label>
@@ -20,6 +22,7 @@
             id="email"
             name="email"
             placeholder="Your Email"
+            formControlName="email"
             required
           />
         </div>
@@ -30,6 +33,7 @@
             id="password"
             name="password"
             placeholder="Your Password"
+            formControlName="password"
             required
           />
         </div>
@@ -43,22 +47,26 @@
               id="remember-me"
               class="checkbox"
               role="button"
+              (change)="onRemeberMeChange($event)"
             />
             <label role="button" for="remember-me" class="ps-1"
               >Remember me</label
             >
           </div>
-          <a routerLink="/auth/forget-password" role="button"
-            >Forgot Password?</a
-          >
+          <a (click)="forgetPassword()" role="button">Forgot Password?</a>
         </div>
-        <button type="submit" routerLink="#">Login</button>
+
+        <button type="submit">Login</button>
       </form>
     </div>
-    <div class="register-link">
-      <p>
+    <div class="register-link d-flex flex-column">
+      <p class="mb-1">
         Don't have an account?
         <a routerLink="/auth/register" role="button"> Register Here</a>
+      </p>
+      <p>
+        Don't verify your email?
+        <a role="button" (click)="verifyEmail()"> Verify Email</a>
       </p>
     </div>
   </div>
