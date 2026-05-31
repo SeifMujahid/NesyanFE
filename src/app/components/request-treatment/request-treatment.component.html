@@ -50,6 +50,13 @@
           >
             Rejected
           </li>
+          <li
+            class="btn btn-outline-primary fw-bold"
+            [class.active]="filter === 'removed'"
+            (click)="getRemovedPatients()"
+          >
+            Removed
+          </li>
         </ul>
       </div>
       <div class="d-flex justify-content-center align-items-center">
@@ -60,7 +67,10 @@
           Accepted Requests Are Waiting For Your Action
         </p>
         <p class="m-0 p-0 fw-bold fs-5" *ngIf="filter === 'rejected'">
-          Rejected Requests Were Rejectd Or Cancelled By You Or Doctor
+          Rejected Requests By You Or Doctor
+        </p>
+        <p class="m-0 p-0 fw-bold fs-5" *ngIf="filter === 'removed'">
+          Pending Patients Removed By Doctor
         </p>
       </div>
     </div>
@@ -113,6 +123,7 @@
             data-bs-target="#exampleModalToggle"
             data-bs-toggle="modal"
             [disabled]="filter !== 'accepted'"
+            [hidden]="filter === 'removed'"
             (click)="viewDetails(i)"
           >
             <i class="fa-solid fa-folder me-1"></i>View Details
@@ -122,17 +133,26 @@
               class="btn btn-outline-success"
               [disabled]="filter !== 'accepted'"
               (click)="selectRequest(request.requestId)"
+              [hidden]="filter === 'removed'"
             >
               <i class="fa-solid fa-square-check me-1"></i>Select
             </button>
             <button
               class="btn btn-outline-danger"
               [disabled]="filter !== 'accepted'"
+              [hidden]="filter === 'removed'"
               (click)="cancelRequest(request.requestId)"
             >
               <i class="fa-solid fa-rectangle-xmark me-1"></i>Cancel
             </button>
           </div>
+          <button
+            class="btn btn-outline-success"
+            (click)="acceptRemove(request.requestId)"
+            [hidden]="filter !== 'removed'"
+          >
+            <i class="fa-solid fa-square-check me-1"></i>Accept Removment
+          </button>
         </div>
       </div>
     </div>

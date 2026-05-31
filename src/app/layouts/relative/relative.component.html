@@ -27,14 +27,21 @@
         <i class="fa-solid fa-users-gear me-1"></i>
         <span>Control Patient's List</span>
       </a>
-      <a routerLink="#" class="new-account-btn btn btn-primary">
+      <a
+        routerLink="/relative/create-patient-account"
+        class="new-account-btn btn btn-primary"
+      >
         <i class="fa-solid fa-plus me-1"></i>
         <span>Create Patient Account</span>
       </a>
-      <a routerLink="#" class="new-account-btn btn btn-primary">
+      <button
+        data-bs-target="#exampleModalToggleNew"
+        data-bs-toggle="modal"
+        class="new-account-btn btn btn-primary"
+      >
         <i class="fa-solid fa-plus me-1"></i>
         <span>Add New Patient</span>
-      </a>
+      </button>
     </div>
     <div
       class="mid-part w-100 d-flex justify-content-between align-items-center fs-5 fw-medium text-primary border-bottom border-top border-primary py-2"
@@ -147,3 +154,71 @@
     </div>
   </div>
 </section>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- add-existing-patient -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggleNew"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          Add New Patient
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <div class="form-container">
+          <form class="fw-bold" [formGroup]="patientData">
+            <div class="form-group mb-2">
+              <label for="patient-id" class="form-label"
+                >Patient National Id</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="patient-id"
+                formControlName="patientId"
+                required
+                placeholder="Enter Valid Egyption ID"
+              />
+            </div>
+            <div class="form-group mb-2">
+              <label for="patient-email" class="form-label"
+                >Patient Email</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="patient-email"
+                formControlName="email"
+                required
+                placeholder="e.g.. patient@gmail.com"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="addNewPatient()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

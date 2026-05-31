@@ -144,4 +144,16 @@ export class DoctorService {
       },
     );
   }
+
+  getSelectedTreatmentRequests(
+    doctorId: number,
+    orderType: number = 2,
+  ): Observable<any> {
+    return this._httpClient.get(
+      `${this.baseUrl}/api/TreatmentRequests/doctor/${doctorId}/doctor-requests`,
+      {
+        params: { orderType: orderType },
+      },
+    );
+  }
 }

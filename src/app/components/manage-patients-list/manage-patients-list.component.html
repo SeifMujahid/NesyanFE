@@ -1,1 +1,67 @@
-<p>manage-patients-list works!</p>
+<app-main-nav></app-main-nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-center align-items-start gap-4"
+>
+  <div class="container">
+    <div
+      class="top d-flex justify-content-between align-items-center mb-4 border-b"
+    >
+      <h2>
+        <i class="fa-solid fa-clipboard-user me-2"></i>Manage Patients List
+      </h2>
+      <a routerLink="/relative" class="btn btn-primary">Back to Home</a>
+    </div>
+    <div
+      class="requests-list px-4 d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+    >
+      <div
+        class="request d-flex justify-content-between align-items-center w-100 mb-3"
+        *ngFor="let request of requests"
+      >
+        <div
+          class="patient d-flex justify-content-center align-items-center gap-3 text-center p-2"
+        >
+          <div
+            class="info d-flex justify-content-evenly align-items-center gap-5"
+          >
+            <div>
+              <h3 class="fw-bold">
+                {{ request.patientInfo?.patientSummary?.fullName }}
+              </h3>
+            </div>
+            <div
+              class="sub-info d-flex justify-content-between align-items-center gap-3"
+            >
+              <p class="m-0 p-0 blue-t">
+                Age: {{ request.patientInfo?.patientSummary?.age }}
+              </p>
+              <p class="m-0 p-0 blue-t">
+                Gender: {{ request.patientInfo?.patientSummary?.gender }}
+              </p>
+              <p
+                class="m-0 fw-bold stage-{{
+                  request.patientInfo?.patientSummary?.currentStage
+                }}"
+              >
+                Stage-{{ request.patientInfo?.patientSummary?.currentStage }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="actions d-flex flex-column justify-content-center align-items-between gap-2"
+        >
+          <button
+            class="btn btn-outline-danger"
+            (click)="removePatients(request.requestId)"
+          >
+            <i class="fa-solid fa-rectangle-xmark me-1"></i>Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

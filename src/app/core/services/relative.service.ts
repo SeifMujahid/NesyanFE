@@ -232,4 +232,42 @@ export class RelativeService {
   getNesyanDoctors(): Observable<any> {
     return this._httpClient.get(`${this.baseUrl}/api/Doctor`);
   }
+  createNewPatientAccount(relativeId: number, data: FormData): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}/api/RelativePatients/${relativeId}/register-patient`,
+      data,
+    );
+  }
+  createRelation(relativeID: number, patientID: number): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}/api/RelativePatients/create-relation`,
+      {},
+      {
+        params: { relativeId: relativeID, patientId: patientID },
+        responseType: 'text',
+      },
+    );
+  }
+  addExistingPatient(relativeID: number, data: any): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}/api/RelativePatients/add-existing-patient`,
+      data,
+      {
+        params: { relativeId: relativeID },
+        responseType: 'text',
+      },
+    );
+  }
+
+  getRemovedPatients(
+    relativeId: number,
+    orderType: number = 4,
+  ): Observable<any> {
+    return this._httpClient.get(
+      `${this.baseUrl}/api/TreatmentRequests/doctor/${relativeId}/relative-requests`,
+      {
+        params: { orderType: orderType },
+      },
+    );
+  }
 }

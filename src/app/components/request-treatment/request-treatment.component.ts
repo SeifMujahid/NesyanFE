@@ -101,6 +101,19 @@ export class RequestTreatmentComponent implements OnInit {
       });
   }
 
+  getRemovedPatients(): void {
+    this._relativeServices.getRemovedPatients(this.relativeId).subscribe({
+      next: (response) => {
+        this.requests = response;
+        this.filter = 'removed';
+        console.log('removed', this.requests);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   getRejectedRequests(): void {
     this._relativeServices
       .getRejectedTreatmentRequests(this.relativeId)
@@ -141,6 +154,21 @@ export class RequestTreatmentComponent implements OnInit {
         },
         error: (err) => {
           this.showError("Couldn't Cancelled Request");
+          console.log(err);
+        },
+      });
+  }
+
+  acceptRemove(requestId: number): void {
+    this._relativeServices
+      .rejectTreatmentRequest(this.relativeId, requestId)
+      .subscribe({
+        next: (response) => {
+          this.showSuccess('Removment Accepted Sucessfuly');
+          this.getRemovedPatients();
+        },
+        error: (err) => {
+          this.showError("Couldn't Accept Removment");
           console.log(err);
         },
       });
