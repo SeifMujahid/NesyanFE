@@ -1,1 +1,296 @@
-<p>request-treatment works!</p>
+<app-main-nav></app-main-nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-center align-items-start gap-4"
+>
+  <div class="container">
+    <div
+      class="top d-flex justify-content-between align-items-center mb-4 border-b"
+    >
+      <h2><i class="fa-solid fa-clipboard-user me-2"></i>Request Tratment</h2>
+      <div>
+        <button
+          class="btn btn-outline-primary fw-bold me-2"
+          data-bs-target="#exampleModalToggle2"
+          data-bs-toggle="modal"
+        >
+          Send New Request
+        </button>
+        <a routerLink="/relative" class="btn btn-primary">Back to Home</a>
+      </div>
+    </div>
+    <div
+      class="filter d-flex justify-content-between align-items-center gap-3 mb-4 pb-4 border-b px-5"
+    >
+      <div class="d-flex justify-content-between align-items-center gap-4">
+        <h4 class="m-0 p-0">Filter<i class="fa-solid fa-sliders ms-1"></i></h4>
+        <ul
+          class="tabs-list d-flex justify-content-start align-items-center gap-4 list-unstyled m-0 p-0"
+        >
+          <li
+            class="btn btn-outline-primary fw-bold"
+            [class.active]="filter === 'pending'"
+            (click)="getPendingRequests()"
+          >
+            Pending
+          </li>
+          <li
+            class="btn btn-outline-primary fw-bold"
+            [class.active]="filter === 'accepted'"
+            (click)="getAcceptedRequests()"
+          >
+            Accepted
+          </li>
+          <li
+            class="btn btn-outline-primary fw-bold"
+            [class.active]="filter === 'rejected'"
+            (click)="getRejectedRequests()"
+          >
+            Rejected
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="m-0 p-0 fw-bold fs-5" *ngIf="filter === 'pending'">
+          Pending Requests Are Waiting For Doctor's Action
+        </p>
+        <p class="m-0 p-0 fw-bold fs-5" *ngIf="filter === 'accepted'">
+          Accepted Requests Are Waiting For Your Action
+        </p>
+        <p class="m-0 p-0 fw-bold fs-5" *ngIf="filter === 'rejected'">
+          Rejected Requests Were Rejectd Or Cancelled By You Or Doctor
+        </p>
+      </div>
+    </div>
+    <div
+      class="requests-list px-4 d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+      *ngFor="let request of requests; let i = index"
+    >
+      <div
+        class="request d-flex justify-content-between align-items-center w-100 mb-3"
+      >
+        <div
+          class="patient d-flex justify-content-center align-items-center gap-3 text-center"
+        >
+          <div class="info">
+            <span class="m-0 p-0">Patient</span>
+            <h3>{{ request.patientInfo?.patientSummary?.fullName }}</h3>
+            <div
+              class="sub-info d-flex justify-content-between align-items-center gap-3"
+            >
+              <p class="m-0 p-0 blue-t">
+                Age: {{ request.patientInfo?.patientSummary?.age }}
+              </p>
+              <p class="m-0 p-0 blue-t">
+                Gender: {{ request.patientInfo?.patientSummary?.gender }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sender d-flex flex-column justify-content-center align-items-start text-center"
+        >
+          <div class="main-sub-info">
+            <span class="m-0 p-0">Requested Doctor</span>
+            <h3>{{ request.doctorSummary?.fullName }}</h3>
+          </div>
+          <div
+            class="sub-info d-flex justify-content-between align-items-center gap-3"
+          >
+            <p class="m-0 p-0 blue-t">
+              Specialization:
+              {{ request.doctorSummary?.specialization }}
+            </p>
+          </div>
+        </div>
+        <div
+          class="actions d-flex flex-column justify-content-center align-items-between gap-2"
+        >
+          <button
+            class="btn btn-outline-primary"
+            data-bs-target="#exampleModalToggle"
+            data-bs-toggle="modal"
+            [disabled]="filter !== 'accepted'"
+            (click)="viewDetails(i)"
+          >
+            <i class="fa-solid fa-folder me-1"></i>View Details
+          </button>
+          <div class="d-flex justify-content-between align-items-center gap-2">
+            <button
+              class="btn btn-outline-success"
+              [disabled]="filter !== 'accepted'"
+              (click)="selectRequest(request.requestId)"
+            >
+              <i class="fa-solid fa-square-check me-1"></i>Select
+            </button>
+            <button
+              class="btn btn-outline-danger"
+              [disabled]="filter !== 'accepted'"
+              (click)="cancelRequest(request.requestId)"
+            >
+              <i class="fa-solid fa-rectangle-xmark me-1"></i>Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- view-details -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1
+          class="modal-title fs-4 text-primary fw-bold"
+          id="exampleModalToggleLabel"
+        >
+          <i class="fa-solid fa-folder-open me-1 fs-3"></i>Doctor Prove
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p class="fw-bold m-0 p-0 text-center">Doctor GraduationDegree</p>
+        <div
+          class="px-4 py-2 border-bottom border-top border-primary w-50 mx-auto"
+        >
+          <img
+            src="https://nesyan-api.runasp.net{{
+              requestDetails.graduationDegree
+            }}"
+            alt="GraduationDegree"
+            class="w-100"
+            width="200px"
+            height="200px"
+          />
+        </div>
+        <p class="fw-bold m-0 py-1 text-center">
+          Doctor Medical Association Card
+        </p>
+        <div
+          class="px-4 py-2 border-bottom border-top border-primary w-50 mx-auto"
+        >
+          <img
+            src="https://nesyan-api.runasp.net{{
+              requestDetails.medicalAssociationCard
+            }}"
+            alt="medicalAssociationCard"
+            class="w-100"
+            width="200px"
+            height="200px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- send-request -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle2"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header justify-content-between">
+        <h1
+          class="modal-title fs-4 text-primary fw-bold"
+          id="exampleModalToggleLabel"
+        >
+          Send New Treatment Request
+        </h1>
+        <div class="d-flex justify-content-center align-items-center">
+          <button
+            class="btn btn-primary me-3 fw-bold px-3"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="sendNewRequest()"
+          >
+            Send
+          </button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p class="fw-bold m-0 py-2 text-center border-bottom border-primary">
+          Select Your Patient And Doctor
+        </p>
+        <div class="w-100 d-flex justify-content-between align-items-start p-2">
+          <div
+            class="w-50 p-2 d-flex flex-column justify-content-start align-items-center gap-2"
+          >
+            <p
+              class="fw-bold m-0 py-2 text-center border-bottom border-primary w-100"
+            >
+              Patients
+            </p>
+            <div
+              *ngFor="let patient of allPatients; let i = index"
+              class="w-100"
+            >
+              <div
+                class="patient2 w-100"
+                [class.activeBox]="activePatientIndex === i"
+                (click)="selectPatient(patient.patientId, i)"
+              >
+                <p>{{ patient.fullName }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Age:{{ patient.age }}</span>
+                  <span class="stage{{ patient.currentStage }}"
+                    >Stage {{ patient.currentStage }}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="w-50 p-2 d-flex flex-column justify-content-start align-items-center gap-2"
+          >
+            <p
+              class="fw-bold m-0 py-2 text-center border-bottom border-primary w-100"
+            >
+              Doctors
+            </p>
+            <div *ngFor="let doctor of allDoctors; let i = index" class="w-100">
+              <div
+                class="patient2 w-100"
+                [class.activeBox]="activeDoctorIndex === i"
+                (click)="selectDoctor(doctor.doctorId, i)"
+              >
+                <p>{{ doctor.fullName }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Age:{{ doctor.age }}</span>
+                  <span>Specialization: {{ doctor.specialization }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

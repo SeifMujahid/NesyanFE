@@ -28,30 +28,23 @@
         <i class="fa-solid fa-people-roof me-1"></i>
         <span>My Patients</span>
       </div>
-      <span>3</span>
+      <span>{{ doctorPatientsList.length }}</span>
     </div>
     <div
       class="patient-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+      *ngFor="let patient of doctorPatientsList; let i = index"
     >
-      <div class="patient active">
-        <p>Mohamed Ahmed</p>
+      <div
+        class="patient"
+        [class.active]="activeIndex === i"
+        (click)="selectPatient(patient.patientId, i)"
+      >
+        <p>{{ patient.fullName }}</p>
         <div class="d-flex justify-content-between align-items-center">
-          <span>Age:61</span>
-          <span class="stage2">Stage 2</span>
-        </div>
-      </div>
-      <div class="patient">
-        <p>Sarah Ali</p>
-        <div>
-          <span>Age:72</span>
-          <span class="stage3">Stage 3</span>
-        </div>
-      </div>
-      <div class="patient">
-        <p>Pep Guardiola</p>
-        <div>
-          <span>Age:55</span>
-          <span class="stage2">Stage 2</span>
+          <span>Age:{{ patient.age }}</span>
+          <span class="stage{{ patient.currentStage }}"
+            >Stage {{ patient.currentStage }}</span
+          >
         </div>
       </div>
     </div>
@@ -63,17 +56,31 @@
       class="patient-bar d-flex justify-content-between align-items-center w-100"
     >
       <div>
-        <p class="m-0">Mohamed Ahmed</p>
+        <p class="m-0">{{ patientDetails.fullName }}</p>
         <div>
-          <span>Age:61</span>
-          <span> - Last Visit: 2024-01-15</span>
+          <span>Age:{{ patientDetails.age }}</span>
+          <span> - Gender: {{ patientDetails.gender }}</span>
         </div>
       </div>
       <a routerLink="#" class="requests-btn btn btn-primary">
         <i class="fa-solid fa-address-card me-1"></i>
         <span>View patient's Profile</span>
       </a>
-      <span class="stage-2">Stage 2: Middle/Moderate</span>
+      <span
+        class="stage-{{ patientDetails.currentStage }}"
+        *ngIf="patientDetails.currentStage === 1"
+        >Stage 1: Early/Mild</span
+      >
+      <span
+        class="stage-{{ patientDetails.currentStage }}"
+        *ngIf="patientDetails.currentStage === 2"
+        >Stage 2: Middle/Moderate</span
+      >
+      <span
+        class="stage-{{ patientDetails.currentStage }}"
+        *ngIf="patientDetails.currentStage === 3"
+        >Stage 3: Late/Severe</span
+      >
     </div>
     <div class="tabs-list w-100">
       <ul

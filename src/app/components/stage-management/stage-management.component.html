@@ -16,8 +16,23 @@
   <div class="w-100">
     <div class="current">
       <p class="m-0 p-0 fw-bold">Current Stage</p>
-      <div class="stage-2 d-flex justify-content-start align-items-center mt-2">
+      <div
+        class="stage-1 d-flex justify-content-start align-items-center mt-2"
+        *ngIf="patientData.currentStage === 1"
+      >
+        <span>Stage 1: Early/Mild</span>
+      </div>
+      <div
+        class="stage-2 d-flex justify-content-start align-items-center mt-2"
+        *ngIf="patientData.currentStage === 2"
+      >
         <span>Stage 2: Middle/Moderate </span>
+      </div>
+      <div
+        class="stage-3 d-flex justify-content-start align-items-center mt-2"
+        *ngIf="patientData.currentStage === 3"
+      >
+        <span>Stage 3: Late/Severe </span>
       </div>
     </div>
     <div class="new-stage mt-2">
@@ -35,6 +50,7 @@
           <li>
             <div
               class="stage-1 d-flex justify-content-start align-items-center mt-2"
+              (click)="updatePatientStage(1)"
             >
               <span>Stage 1: Early/Mild</span>
             </div>
@@ -42,6 +58,7 @@
           <li>
             <div
               class="stage-2 d-flex justify-content-start align-items-center mt-2"
+              (click)="updatePatientStage(2)"
             >
               <span>Stage 2: Middle/Moderate</span>
             </div>
@@ -49,6 +66,7 @@
           <li>
             <div
               class="stage-3 d-flex justify-content-start align-items-center mt-2"
+              (click)="updatePatientStage(3)"
             >
               <span>Stage 3: Late/Severe</span>
             </div>

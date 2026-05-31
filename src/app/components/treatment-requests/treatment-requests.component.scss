@@ -2,10 +2,10 @@
 /* main */
 /* --------------------------------------------------------------------------------- */
 .main-section {
-  min-height: calc(100vh - 72px);
+  min-height: 100vh;
   background-color: #dbeafe;
   padding: 20px 32px;
-  margin-top: 72px;
+  padding-top: 100px;
 }
 
 .container {
@@ -16,7 +16,8 @@
   border-radius: 8px;
 }
 
-.container .top h2 {
+.container .top h2,
+.container .filter h4 {
   color: #155dfc;
 }
 
@@ -43,6 +44,45 @@
   color: #155dfc;
 }
 
+// .tabs-list {
+//   background-color: white;
+//   border: 1px solid #155dfc;
+//   box-shadow: 0 0 5px #155dfc;
+//   padding: 16px 16px;
+//   border-radius: 8px;
+// }
+
+// .tabs-list ul li span {
+//   text-decoration: none;
+//   font-weight: bold;
+//   cursor: pointer;
+//   color: rgb(21, 93, 252, 0.8);
+//   background-color: white;
+//   padding: 4px 16px;
+//   border-radius: 8px;
+//   border: 1px solid rgb(21, 93, 252, 0.8);
+//   text-align: center;
+//   box-shadow: 0 0 5px #155dfc inset;
+//   transition: 0.3s all linear;
+// }
+
+// .tabs-list ul li span:hover {
+//   color: #155dfc;
+//   background-color: #dbeafe;
+//   box-shadow: 0 0 0px #155dfc inset;
+// }
+
+// .tabs-list ul li span.active {
+//   color: #155dfc;
+//   background-color: #dbeafe;
+//   padding: 4px 16px;
+//   box-shadow: 0 0 5px #155dfc;
+// }
+
+.filer ul li.active {
+  background-color: #155dfc;
+  color: white;
+}
 /* --------------------------------------------------------------------------------- */
 /* view-details */
 /* --------------------------------------------------------------------------------- */

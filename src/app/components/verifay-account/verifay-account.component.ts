@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-verifay-account',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './verifay-account.component.html',
   styleUrls: ['./verifay-account.component.scss'],
 })

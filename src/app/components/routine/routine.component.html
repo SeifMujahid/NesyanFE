@@ -1,5 +1,5 @@
 <!-- --------------------------------------------------------------------------------------- -->
-<!-- appointments -->
+<!-- tasks -->
 <!-- --------------------------------------------------------------------------------------- -->
 <div
   class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
@@ -7,13 +7,10 @@
   <div class="top-part d-flex justify-content-between align-items-center w-100">
     <div class="right">
       <p class="p-0 m-0 fw-bold fs-5">
-        <i
-          class="fa-solid fa-calendar-days me-1 fs-3"
-          style="color: #9810fa"
-        ></i>
-        Appointments
+        <i class="fa-solid fa-list-check me-1 fs-4" style="color: #00a63e"></i>
+        Daily Routine
       </p>
-      <p class="text-muted m-0 p-0">Schedule and track appointments</p>
+      <p class="text-muted m-0 p-0">Manage patient's Daily Routine</p>
     </div>
     <div class="left">
       <button
@@ -21,42 +18,32 @@
         data-bs-toggle="modal"
         (click)="changeToAdd()"
       >
-        <i class="fa-regular fa-square-plus me-1 fs-5"></i>Add Appointment
+        <i class="fa-regular fa-square-plus me-1 fs-5"></i>Add Task
       </button>
     </div>
   </div>
   <div
-    class="appointments-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
-    *ngFor="let appointment of patientAppointmentsList; let i = index"
+    class="tasks-list w-100 d-flex flex-column justify-content-start align-items-center gap-2"
+    *ngFor="let routine of patientRoutineList; let i = index"
   >
-    <div class="appointment">
+    <div class="task" [class.done]="routine.isCompleted">
       <div
-        class="d-flex flex-column gap-1 text-muted flex-grow-1"
+        class="text-muted flex-grow-1"
         data-bs-target="#exampleModalToggle"
         data-bs-toggle="modal"
-        (click)="changeToEDit(appointment.id, i)"
+        (click)="changeToEDit(routine.id, i)"
       >
-        <p class="fs-4">{{ appointment.title }}</p>
-        <div class="d-flex flex-column gap-2">
-          <span
-            ><i class="fa-solid fa-calendar-day fs-5 me-1"></i>
-            {{ appointment.reminderDate }} at
-            {{ appointment.reminderTime }}</span
-          >
-          <span
-            ><i class="fa-solid fa-map-pin fs-5 me-1"></i>
-            {{ appointment.location }} - {{ appointment.specialty }}</span
-          >
-        </div>
+        <p>{{ routine.title }}</p>
+        <p>{{ routine.reminderTime }}</p>
       </div>
-      <div class="trash-can" (click)="deleteAppointment(appointment.id)">
+      <div class="trash-can" (click)="deleteRoutine(routine.id)">
         <i class="fa-solid fa-trash-can fs-5 text-danger"></i>
       </div>
     </div>
   </div>
 </div>
 <!-- --------------------------------------------------------------------------------------- -->
-<!-- add-appointment -->
+<!-- add-task -->
 <!-- --------------------------------------------------------------------------------------- -->
 <div
   class="modal fade"
@@ -73,14 +60,14 @@
           id="exampleModalToggleLabel"
           *ngIf="!onEdit"
         >
-          Add New Appointment
+          Add New Routine
         </h1>
         <h1
           class="modal-title fs-5"
           id="exampleModalToggleLabel"
           *ngIf="onEdit"
         >
-          Edit Appointment
+          Edit Routine
         </h1>
         <button
           type="button"
@@ -90,82 +77,42 @@
         ></button>
       </div>
       <div class="modal-body overflow-y-scroll" style="max-height: 400px">
-        <form class="fw-bold" [formGroup]="appointmentData">
-          <div class="form-group mb-2">
-            <label for="appointment-title" class="form-label"
-              >Appointment Title</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="appointment-title"
-              formControlName="title"
-              required
-              placeholder="e.g.. Check Up"
-            />
-          </div>
-          <div class="form-group mb-2">
-            <label for="appointment-name" class="form-label"
-              >Appointment Name</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="appointment-name"
-              formControlName="name"
-              required
-              placeholder="e.g.. Check Mental Health"
-            />
-          </div>
-          <div class="form-group mb-2">
-            <label for="appointment-specialty" class="form-label"
-              >Appointment Specialty</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="appointment-specialty"
-              formControlName="specialty"
-              required
-              placeholder="e.g.. Mental Health"
-            />
-          </div>
-          <div class="form-group mb-2">
-            <label for="appointment-location" class="form-label"
-              >Appointment Location</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="appointment-location"
-              formControlName="location"
-              required
-              placeholder="e.g.. Cairo Hospital"
-            />
-          </div>
+        <div class="form-container">
+          <form class="fw-bold" [formGroup]="routineData">
+            <div class="form-group mb-2">
+              <label for="routine-name" class="form-label">Routine Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="routine-name"
+                formControlName="title"
+                required
+                placeholder="e.g.. Morning walk"
+              />
+            </div>
 
-          <div class="form-group mb-2">
-            <label for="appointment-frequency" class="form-label"
-              >Appointment Frequency</label
-            >
-            <select
-              id="appointment-frequency"
-              name="appointment-frequency"
-              class="form-select"
-              formControlName="frequency"
-              required
-            >
-              <option value="" disabled selected hidden>
-                Select routine frequency
-              </option>
-              <option value="1">OneTime</option>
-              <option value="2">Daily</option>
-              <option value="3">Weekly</option>
-              <option value="4">Monthly</option>
-              <option value="5">Custom</option>
-            </select>
-          </div>
-          <!-- <div class="form-group mb-2">
+            <div class="form-group mb-2">
+              <label for="routine-frequency" class="form-label"
+                >Routine Frequency</label
+              >
+              <select
+                id="routine-frequency"
+                name="routine-frequency"
+                class="form-select"
+                formControlName="frequency"
+                required
+              >
+                <option value="" disabled selected hidden>
+                  Select routine frequency
+                </option>
+                <option value="1">OneTime</option>
+                <option value="2">Daily</option>
+                <option value="3">Weekly</option>
+                <option value="4">Monthly</option>
+                <option value="5">Custom</option>
+              </select>
+            </div>
+            <!-- <div class="form-group mb-2">
               <p class="form-label">Medication Time</p>
               <div class="d-flex flex-column justify-content-center gap-3">
                 <div
@@ -282,20 +229,18 @@
                 </div>
               </div>
             </div> -->
-          <div class="form-group mb-2">
-            <label for="appointment-time" class="form-label"
-              >Appointment Time</label
-            >
-            <input
-              type="time"
-              class="form-control"
-              id="appointment-time"
-              name="appointment-time"
-              formControlName="reminderTime"
-              required
-            />
-          </div>
-          <!-- <div class="form-group mb-2">
+            <div class="form-group mb-2">
+              <label for="routine-time" class="form-label">Routine Time</label>
+              <input
+                type="time"
+                class="form-control"
+                id="routine-time"
+                name="routine-time"
+                formControlName="reminderTime"
+                required
+              />
+            </div>
+            <!-- <div class="form-group mb-2">
               <p class="form-label">Days of week</p>
               <div class="d-flex flex-column justify-content-center gap-3">
                 <div
@@ -399,32 +344,31 @@
                 </div>
               </div>
             </div> -->
-          <div class="form-group mb2">
-            <label for="appointment-date" class="form-label"
-              >Appointment Date</label
-            >
-            <input
-              type="date"
-              name="appointment-date"
-              id="appointment-date"
-              class="form-control"
-              formControlName="reminderDate"
-              required
-            />
-          </div>
-          <div class="form-group mb2">
-            <label for="appointment-notes" class="form-label">Notes</label>
-            <textarea
-              style="resize: none"
-              class="form-control"
-              id="appointment-notes"
-              name="appointment-notes"
-              formControlName="notes"
-              rows="2"
-              placeholder="Additional instructions or information about the task"
-            ></textarea>
-          </div>
-        </form>
+            <div class="form-group mb2">
+              <label for="routine-date" class="form-label">Routine Date</label>
+              <input
+                type="date"
+                name="routine-date"
+                id="routine-date"
+                class="form-control"
+                formControlName="reminderDate"
+                required
+              />
+            </div>
+            <div class="form-group mb2">
+              <label for="routine-notes" class="form-label">Notes</label>
+              <textarea
+                style="resize: none"
+                class="form-control"
+                id="routine-notes"
+                name="routine-notes"
+                formControlName="notes"
+                rows="2"
+                placeholder="Additional instructions or information about the task"
+              ></textarea>
+            </div>
+          </form>
+        </div>
       </div>
       <div class="modal-footer">
         <button
@@ -432,7 +376,7 @@
           data-bs-dismiss="modal"
           aria-label="Close"
           *ngIf="!onEdit"
-          (click)="completeAddAppointment()"
+          (click)="completeAddRoutine()"
         >
           Add
         </button>
@@ -441,7 +385,7 @@
           data-bs-dismiss="modal"
           aria-label="Close"
           *ngIf="onEdit"
-          (click)="completeEditAppointment()"
+          (click)="completeEditRoutine()"
         >
           Edit
         </button>

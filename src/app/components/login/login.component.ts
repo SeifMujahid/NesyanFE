@@ -70,6 +70,9 @@ export class LoginComponent {
           this.showError(err.error.message);
         },
       });
+    } else {
+      this.loginForm.markAllAsTouched();
+      this.showError('Please fill in the form correctly before submitting.');
     }
   }
 

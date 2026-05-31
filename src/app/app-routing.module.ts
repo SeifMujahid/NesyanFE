@@ -209,28 +209,36 @@ const routes: Routes = [
       ),
     title: 'Nesyan|Relative',
     children: [
-      { path: '', redirectTo: 'reminders', pathMatch: 'full' },
+      { path: '', redirectTo: 'routine', pathMatch: 'full' },
       {
-        path: 'reminders',
+        path: 'routine',
         loadComponent: () =>
-          import('./components/reminders/reminders.component').then(
-            (m) => m.RemindersComponent,
+          import('./components/routine/routine.component').then(
+            (m) => m.RoutineComponent,
           ),
-        title: 'Nesyan|Reminders',
+        title: 'Nesyan|Routine',
       },
-      {
-        path: 'daily-tasks',
-        loadComponent: () =>
-          import('./components/daily-tasks/daily-tasks.component').then(
-            (m) => m.DailyTasksComponent,
-          ),
-        title: 'Nesyan|Daily Tasks',
-      },
+      // {
+      //   path: 'reminders',
+      //   loadComponent: () =>
+      //     import('./components/reminders/reminders.component').then(
+      //       (m) => m.RemindersComponent,
+      //     ),
+      //   title: 'Nesyan|Reminders',
+      // },
+      // {
+      //   path: 'daily-tasks',
+      //   loadComponent: () =>
+      //     import('./components/daily-tasks/daily-tasks.component').then(
+      //       (m) => m.DailyTasksComponent,
+      //     ),
+      //   title: 'Nesyan|Daily Tasks',
+      // },
       {
         path: 'medication',
         loadComponent: () =>
-          import('./components/medication/medication.component').then(
-            (m) => m.MedicationComponent,
+          import('./components/medication-relative/medication-relative.component').then(
+            (m) => m.MedicationRelativeComponent,
           ),
         title: 'Nesyan|Medication',
       },
