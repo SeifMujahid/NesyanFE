@@ -367,7 +367,21 @@
           <div class="form-container w-100">
             <h5>Professional Information</h5>
             <div class="form-container w-100">
-              <form class="d-flex flex-column align-items-center w-100">
+              <form
+                class="d-flex flex-column align-items-center w-100"
+                [formGroup]="doctorSpecialization"
+              >
+                <div class="form-group mb-2">
+                  <label for="specialization">Specialization</label>
+                  <input
+                    id="specialization"
+                    type="text"
+                    name="specialization"
+                    placeholder="Enter your specialization"
+                    formControlName="specialization"
+                    required
+                  />
+                </div>
                 <!-- Graduation Degree -->
                 <p>Upload Graduation Degree</p>
                 <div

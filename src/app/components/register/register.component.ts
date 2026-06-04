@@ -153,6 +153,10 @@ export class RegisterComponent {
     currentStage: new FormControl(1, [Validators.required]),
   });
 
+  doctorSpecialization: FormGroup = new FormGroup({
+    specialization: new FormControl(null, [Validators.required]),
+  });
+
   // doctorProfessionalInformation: FormGroup = new FormGroup({
   //   graduationDegree: new FormControl(null, [Validators.required]),
   //   medicalAssociationCard: new FormControl(null, [Validators.required]),
@@ -545,6 +549,7 @@ export class RegisterComponent {
     if (
       this.personalInformation.valid &&
       this.accountDetails.valid &&
+      this.doctorSpecialization.valid &&
       this.degreeFileDoctor &&
       this.cardFileDoctor
     ) {
@@ -583,7 +588,12 @@ export class RegisterComponent {
         formData.append('Image', this.userImage as File);
       }
 
-      // Files
+      // Professional Details
+      formData.append(
+        'Specialization',
+        this.doctorSpecialization.value.specialization,
+      );
+
       formData.append('GraduationDegree', this.degreeFileDoctor as File);
 
       formData.append('MedicalAssociationCard', this.cardFileDoctor as File);
@@ -595,6 +605,12 @@ export class RegisterComponent {
       // });
     } else {
       console.log('there is error');
+      if (this.doctorSpecialization.invalid) {
+        this.showError(
+          'Specialization is required',
+          'Please enter your specialization',
+        );
+      }
       if (!this.degreeFileDoctor) {
         this.showError(
           'Graduation degree is required',

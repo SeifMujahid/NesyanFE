@@ -36,7 +36,7 @@
   border-top: 1px solid #155dfc;
 }
 
-.games .value {
+.value {
   color: #155dfc;
 }
 
@@ -58,7 +58,7 @@
   color: #155dfc;
   padding: 4px 8px;
   border-radius: 8px;
-  border: 1px solid #155dfc;
+  border: 1px solid rgb(21, 93, 252);
 }
 
 .dangerous {
@@ -67,4 +67,10 @@
   padding: 4px 8px;
   border-radius: 8px;
   border: 1px solid tomato;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }

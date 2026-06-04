@@ -56,6 +56,7 @@ export class RoutineComponent implements OnInit {
       this.getPatientRoutineList();
     });
   }
+  
 
   getPatientRoutineList(): void {
     this._relativeService

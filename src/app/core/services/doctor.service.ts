@@ -156,4 +156,9 @@ export class DoctorService {
       },
     );
   }
+  getPatientReport(patientId: number): Observable<any> {
+    return this._httpClient.get(
+      `${this.baseUrl}/api/Doctor/patient/${patientId}/report`,
+    );
+  }
 }
