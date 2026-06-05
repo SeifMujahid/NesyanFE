@@ -1,1 +1,103 @@
-<p>location works!</p>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- location -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="tab-content d-flex flex-column justify-content-center align-items-center gap-3 w-100"
+>
+  <div class="top-part d-flex justify-content-start align-items-center w-100">
+    <div class="right w-100">
+      <p class="p-0 m-0 fw-bold fs-5">
+        <i
+          class="fa-solid fa-map-location-dot me-1 fs-3"
+          style="color: #f54900"
+        ></i>
+        Location Tracking
+      </p>
+      <p class="text-muted m-0 p-0">
+        Manage Patient's Location and Safe Zones.
+      </p>
+    </div>
+  </div>
+  <div
+    class="map border-a rounded p-1 w-100 d-flex justify-content-center align-items-center"
+  >
+    <google-map height="400px" [width]="'100%'" [center]="center" [zoom]="zoom">
+    </google-map>
+  </div>
+  <div class="w-100 p-1 text-start">
+    <h5 class="fw-bold fs-5">New Safe Zone</h5>
+  </div>
+  <div
+    class="w-100 p-2 border-b border-t d-flex justify-content-between align-items-center gap-3"
+  >
+    <div class="form-container p-2 w-100">
+      <form class="w-100 d-flex flex-column gap-2" [formGroup]="zoneForm">
+        <div class="form-group">
+          <label for="zoneName" class="form-label fw-bold"
+            >Safe Zone Name</label
+          >
+          <input
+            class="form-control"
+            id="zoneName"
+            type="text"
+            formControlName="name"
+            placeholder="Enter Safe Zone Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber" class="form-label fw-bold"
+            >Phone Number</label
+          >
+          <input
+            class="form-control"
+            id="phoneNumber"
+            type="text"
+            formControlName="phone"
+            placeholder="Enter Phone Number"
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      class="w-100 d-flex flex-column justify-content-center align-items-center gap-2"
+    >
+      <div
+        class="d-flex flex-column justify-content-center align-items-center gap-2 w-100"
+      >
+        <button
+          class="btn btn-outline-secondary w-100 fw-bold"
+          (click)="chooseZoneType(1)"
+          [disabled]="isDrawing"
+          type="button"
+        >
+          <i class="fa-regular fa-circle me-2"></i>Circle
+        </button>
+        <button
+          class="btn btn-outline-secondary w-100 fw-bold"
+          (click)="chooseZoneType(0)"
+          [disabled]="isDrawing"
+          type="button"
+        >
+          <i class="fa-solid fa-draw-polygon me-2"></i>Polygon
+        </button>
+      </div>
+      <div class="d-flex justify-content-center align-items-center gap-2 w-100">
+        <button
+          class="main-btn px-5 btn w-50"
+          (click)="chooseSaveType()"
+          [disabled]="!isDrawing"
+          type="button"
+        >
+          Save
+        </button>
+        <button
+          class="cancel-btn px-5 btn w-50"
+          (click)="cancleZone()"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
