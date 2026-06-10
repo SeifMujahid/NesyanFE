@@ -1,1 +1,279 @@
-<p>Patient Profile Works!</p>
+<app-main-nav></app-main-nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-center align-items-start gap-4"
+>
+  <div class="container">
+    <!-- ── Top bar ── -->
+    <div
+      class="top d-flex justify-content-between align-items-center mb-4 border-b"
+    >
+      <h2><i class="fa-solid fa-user me-2"></i>Patient Profile</h2>
+      <button class="btn btn-primary" onclick="history.back()">Back</button>
+    </div>
+
+    <div
+      class="profile-content d-flex justify-content-between align-content-start w-100 p-2"
+    >
+      <!-- ── Profile Image ── -->
+      <div class="profile-image col-2 rounded me-2">
+        <img
+          class="w-100 rounded"
+          [src]="
+            imagePreview
+              ? imagePreview.startsWith('data:')
+                ? imagePreview
+                : 'https://nesyan-api.runasp.net/' + imagePreview
+              : 'assets/default-avatar.png'
+          "
+          alt="Profile Image"
+        />
+      </div>
+
+      <!-- ── Profile Data ── -->
+      <div class="form-Container col-10">
+        <div class="view-mode d-flex flex-column w-100 p-2">
+          <!-- First Name & Last Name -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>First Name</label>
+              <p class="profile-value">{{ patientProfile.fName || "—" }}</p>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <p class="profile-value">{{ patientProfile.lName || "—" }}</p>
+            </div>
+          </div>
+
+          <!-- Username & Age -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>User Name</label>
+              <p class="profile-value">{{ patientProfile.userName || "—" }}</p>
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              <p class="profile-value">{{ patientProfile.age || "—" }}</p>
+            </div>
+          </div>
+
+          <!-- Country & City — patient only -->
+          <div
+            *ngIf="currentRole === 'patient'"
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>Country</label>
+              <p class="profile-value">{{ patientProfile.country || "—" }}</p>
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <p class="profile-value">{{ patientProfile.city || "—" }}</p>
+            </div>
+          </div>
+
+          <!-- Phone & Email — patient only -->
+          <div
+            *ngIf="currentRole === 'patient'"
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>Phone</label>
+              <p class="profile-value">{{ patientProfile.phone || "—" }}</p>
+            </div>
+            <div class="form-group">
+              <label>Email <span class="readonly-badge">Read only</span></label>
+              <p class="profile-value">{{ patientProfile.email || "—" }}</p>
+            </div>
+          </div>
+
+          <!-- Gender & National ID -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>Gender</label>
+              <p class="profile-value">{{ patientProfile.gender || "—" }}</p>
+            </div>
+            <div *ngIf="currentRole === 'patient'" class="form-group">
+              <label
+                >National Id
+                <span class="readonly-badge">Read only</span></label
+              >
+              <p class="profile-value">
+                {{ patientProfile.nationalId || "—" }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Height & Weight -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>Height (cm)</label>
+              <p class="profile-value">{{ patientProfile.height || "—" }}</p>
+            </div>
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <p class="profile-value">{{ patientProfile.weight || "—" }}</p>
+            </div>
+          </div>
+
+          <!-- Blood Type & Current Stage -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label>Blood Type</label>
+              <p class="profile-value">{{ patientProfile.bloodType || "—" }}</p>
+            </div>
+            <div class="form-group">
+              <label>Current Stage</label>
+              <p class="profile-value">
+                {{ patientProfile.currentStageName || "—" }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Diseases -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group w-100">
+              <label>Diseases</label>
+              <p class="profile-value">
+                {{ patientProfile.diseases?.join(", ") || "—" }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Last Assessment ── -->
+        <div class="assessment-section" *ngIf="lastAssessment">
+          <div class="assessment-header">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <h5>Last Assessment</h5>
+          </div>
+
+          <div class="assessment-grid">
+            <!-- Cognitive -->
+            <div class="assessment-card">
+              <div class="assessment-card-header cognitive">
+                <i class="fa-solid fa-brain me-2"></i>Cognitive
+              </div>
+              <div class="assessment-card-body">
+                <div class="assessment-row">
+                  <span class="a-label">Recognition of Name</span>
+                  <span class="a-badge">{{
+                    lastAssessment.recognitionOfName
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Recognition of Place</span>
+                  <span class="a-badge">{{
+                    lastAssessment.recognitionOfPlace
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Recognition of Time</span>
+                  <span class="a-badge">{{
+                    lastAssessment.recognitionOfTime
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Ability to Concentrate</span>
+                  <span class="a-badge">{{
+                    lastAssessment.abilityToConcentrate
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Recall of Recent Events</span>
+                  <span class="a-badge">{{
+                    lastAssessment.recallOfRecentEvents
+                  }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emotional -->
+            <div class="assessment-card">
+              <div class="assessment-card-header emotional">
+                <i class="fa-solid fa-heart-pulse me-2"></i>Emotional
+              </div>
+              <div class="assessment-card-body">
+                <div class="assessment-row">
+                  <span class="a-label">Anxiety or Stress</span>
+                  <span class="a-badge">{{
+                    lastAssessment.anxietyOrStress
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Depression or Sadness</span>
+                  <span class="a-badge">{{
+                    lastAssessment.depressionOrSadness
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Aggression</span>
+                  <span class="a-badge">{{ lastAssessment.aggression }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily Activities -->
+            <div class="assessment-card">
+              <div class="assessment-card-header daily">
+                <i class="fa-solid fa-list-check me-2"></i>Daily Activities
+              </div>
+              <div class="assessment-card-body">
+                <div class="assessment-row">
+                  <span class="a-label">Eating &amp; Drinking</span>
+                  <span class="a-badge">{{
+                    lastAssessment.eatingAndDrinking
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Bathing</span>
+                  <span class="a-badge">{{ lastAssessment.bathing }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Dressing</span>
+                  <span class="a-badge">{{ lastAssessment.dressing }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Using Bathroom</span>
+                  <span class="a-badge">{{
+                    lastAssessment.usingBathroom
+                  }}</span>
+                </div>
+                <div class="assessment-row">
+                  <span class="a-label">Mobility</span>
+                  <span class="a-badge">{{ lastAssessment.mobility }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="assessment-notes" *ngIf="lastAssessment.notes">
+            <i class="fa-solid fa-note-sticky me-2"></i>
+            <strong>Notes: </strong>{{ lastAssessment.notes }}
+          </div>
+        </div>
+
+        <!-- No assessment fallback -->
+        <div class="assessment-empty" *ngIf="!lastAssessment">
+          <i class="fa-solid fa-clipboard fa-2x mb-2"></i>
+          <p>No assessment available yet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

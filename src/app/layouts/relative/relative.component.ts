@@ -12,6 +12,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import {
+  DoctorSummary,
+  SendRequest2,
+  SendRequest3,
+} from 'src/app/core/interfaces/treatment-requests';
 
 @Component({
   selector: 'app-relative',
@@ -32,6 +37,19 @@ export class RelativeComponent implements OnInit {
   patientDetails: RelativePatientsList = {} as RelativePatientsList;
   relativeID: string = '';
   activeIndex: number = 0;
+
+  requestPatientId: number | null = null;
+  requestDoctorId: number | null = null;
+  requestCaregiverId: number | null = null;
+  requestDoctorEmail: string | null = null;
+  requestCaregiverEmail: string | null = null;
+  activePatientIndex: number | null = null;
+  activeDoctorIndex: number | null = null;
+  activecaregiverIndex: number | null = null;
+  allPatients: RelativePatientsList[] = [];
+  allDoctors: DoctorSummary[] = [];
+  allCaregivers: any[] = [];
+
   constructor(
     private _relativeService: RelativeService,
     private _mainService: MainService,
@@ -51,6 +69,9 @@ export class RelativeComponent implements OnInit {
     this._mainService.currentUserId.subscribe((userId) => {
       this.relativeID = userId;
       this.getRelativePatientList();
+      this.getPatientsList();
+      this.getDoctorsList();
+      this.getCareGiersList();
     });
   }
 
@@ -105,6 +126,120 @@ export class RelativeComponent implements OnInit {
         email: null,
       });
     }
+  }
+
+  selectPatientRequest(patientID: number, index: number) {
+    this.requestPatientId = patientID;
+    this.activePatientIndex = index;
+  }
+
+  selectDoctor(doctorID: number, index: number) {
+    this.activeDoctorIndex = index;
+    if (doctorID != null) {
+      this._relativeService.getDoctorById(doctorID).subscribe({
+        next: (response) => {
+          this.requestDoctorId = response.nationalId;
+          this.requestDoctorEmail = response.email;
+        },
+      });
+    }
+  }
+
+  selectCaregiver(caregiverID: number, index: number) {
+    this.activecaregiverIndex = index;
+    if (caregiverID != null) {
+      this._relativeService.getCaregiverById(caregiverID).subscribe({
+        next: (response) => {
+          this.requestCaregiverId = response.nationalId;
+          this.requestCaregiverEmail = response.email;
+        },
+      });
+    }
+  }
+
+  sendNewRequest() {
+    if (
+      this.requestPatientId != null &&
+      this.requestDoctorId != null &&
+      this.requestDoctorEmail != null
+    ) {
+      const requestData: SendRequest2 = {
+        nationalIdDoctor: this.requestDoctorId,
+        emailDoctor: this.requestDoctorEmail,
+        patientId: this.requestPatientId,
+      };
+      this._relativeService.sendTreatmentRequest2(requestData).subscribe({
+        next: (response) => {
+          this.showSuccess('Requested Sucessfully');
+        },
+        error: (err) => {
+          this.showError('Faild To Request');
+          console.log(err);
+        },
+      });
+    } else {
+      this.showError('Follow The Steps To Request');
+    }
+  }
+
+  sendNewRequestCaregiver() {
+    if (
+      this.requestPatientId != null &&
+      this.requestCaregiverId != null &&
+      this.requestCaregiverEmail != null
+    ) {
+      const requestData: SendRequest3 = {
+        nationalIdcaregavier: this.requestCaregiverId,
+        emailcaregavier: this.requestCaregiverEmail,
+        patientId: this.requestPatientId,
+      };
+      this._relativeService.requestCaregiver2(requestData).subscribe({
+        next: (response) => {
+          this.showSuccess('Requested Sucessfully');
+        },
+        error: (err) => {
+          this.showError('Faild To Request');
+          console.log(err);
+        },
+      });
+    } else {
+      this.showError('Follow The Steps To Request');
+    }
+  }
+
+  getPatientsList(): void {
+    this._relativeService
+      .getRelativePatientList(Number(this.relativeID))
+      .subscribe({
+        next: (response) => {
+          this.allPatients = response.patientsSummary;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  getDoctorsList(): void {
+    this._relativeService.getNesyanDoctors().subscribe({
+      next: (response) => {
+        this.allDoctors = response;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  getCareGiersList(): void {
+    this._relativeService.getNesyanCaregivers().subscribe({
+      next: (response) => {
+        this.allCaregivers = response;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   showSuccess(message: string): void {

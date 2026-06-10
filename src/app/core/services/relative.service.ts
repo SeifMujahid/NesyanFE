@@ -6,7 +6,11 @@ import {
   AddMedicationData,
   AddRoutineData,
 } from '../interfaces/patients';
-import { SendRequest } from '../interfaces/treatment-requests';
+import {
+  SendRequest,
+  SendRequest2,
+  SendRequest3,
+} from '../interfaces/treatment-requests';
 
 @Injectable({
   providedIn: 'root',
@@ -269,5 +273,50 @@ export class RelativeService {
         params: { orderType: orderType },
       },
     );
+  }
+
+  getRelativeProfile(relativeId: number): Observable<any> {
+    return this._httpClient.get(
+      `${this.baseUrl}/api/Relatives/${relativeId}/profile`,
+    );
+  }
+
+  editRelativeProfile(relativeId: number, formData: FormData): Observable<any> {
+    return this._httpClient.put(
+      `${this.baseUrl}/api/Relatives/${relativeId}`,
+      formData,
+    );
+  }
+
+  sendTreatmentRequest2(data: SendRequest2): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}/api/DoctorPatient/add-patient`,
+      data,
+      {
+        responseType: 'text',
+      },
+    );
+  }
+
+  getDoctorById(id: number): Observable<any> {
+    return this._httpClient.get(`${this.baseUrl}/api/Doctor/${id}/profile`);
+  }
+
+  requestCaregiver2(data: SendRequest3): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}/api/CaregiverPatient/add-patient`,
+      data,
+      {
+        responseType: 'text',
+      },
+    );
+  }
+
+  getCaregiverById(id: number): Observable<any> {
+    return this._httpClient.get(`${this.baseUrl}/api/Caregivers/${id}/profile`);
+  }
+
+  getNesyanCaregivers(): Observable<any> {
+    return this._httpClient.get(`${this.baseUrl}/api/Caregivers`);
   }
 }

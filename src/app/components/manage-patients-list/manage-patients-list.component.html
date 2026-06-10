@@ -29,24 +29,16 @@
           >
             <div>
               <h3 class="fw-bold">
-                {{ request.patientInfo?.patientSummary?.fullName }}
+                {{ request.fullName }}
               </h3>
             </div>
             <div
               class="sub-info d-flex justify-content-between align-items-center gap-3"
             >
-              <p class="m-0 p-0 blue-t">
-                Age: {{ request.patientInfo?.patientSummary?.age }}
-              </p>
-              <p class="m-0 p-0 blue-t">
-                Gender: {{ request.patientInfo?.patientSummary?.gender }}
-              </p>
-              <p
-                class="m-0 fw-bold stage-{{
-                  request.patientInfo?.patientSummary?.currentStage
-                }}"
-              >
-                Stage-{{ request.patientInfo?.patientSummary?.currentStage }}
+              <p class="m-0 p-0 blue-t">Age: {{ request.age }}</p>
+              <p class="m-0 p-0 blue-t">Gender: {{ request.gender }}</p>
+              <p class="m-0 fw-bold stage-{{ request.currentStage }}">
+                Stage-{{ request.currentStage }}
               </p>
             </div>
           </div>
@@ -56,7 +48,7 @@
         >
           <button
             class="btn btn-outline-danger"
-            (click)="removePatients(request.requestId)"
+            (click)="removePatients2(request.patientId)"
           >
             <i class="fa-solid fa-rectangle-xmark me-1"></i>Remove
           </button>

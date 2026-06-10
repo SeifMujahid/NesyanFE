@@ -1,1 +1,217 @@
-<p>doctor-profile works!</p>
+<app-main-nav></app-main-nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-center align-items-start gap-4"
+>
+  <div class="container">
+    <div
+      class="top d-flex justify-content-between align-items-center mb-4 border-b"
+    >
+      <h2><i class="fa-solid fa-user-doctor me-2"></i>My Profile</h2>
+      <a routerLink="/doctor" class="btn btn-primary">Back to Home</a>
+    </div>
+
+    <div
+      class="profile-content d-flex justify-content-between align-content-start w-100 p-2"
+    >
+      <!-- ── Profile Image ── -->
+      <div class="profile-image col-2 rounded me-2">
+        <img
+          class="w-100 rounded"
+          src="https://nesyan-api.runasp.net/{{ doctorProfile.imageUrl }}"
+          alt="Doctor profile picture"
+        />
+      </div>
+
+      <!-- ── Info ── -->
+      <div class="form-Container col-10">
+        <form class="d-flex flex-column justify-content-center w-100 p-2">
+          <!-- First Name & Last Name -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="fName">First Name</label>
+              <input
+                id="fName"
+                type="text"
+                [value]="doctorProfile.fName"
+                disabled
+                aria-label="First Name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="lName">Last Name</label>
+              <input
+                id="lName"
+                type="text"
+                [value]="doctorProfile.lName"
+                disabled
+                aria-label="Last Name"
+              />
+            </div>
+          </div>
+
+          <!-- Username & Age -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="userName">User Name</label>
+              <input
+                id="userName"
+                type="text"
+                [value]="doctorProfile.userName"
+                disabled
+                aria-label="User Name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                id="age"
+                type="text"
+                [value]="doctorProfile.age"
+                disabled
+                aria-label="Age"
+              />
+            </div>
+          </div>
+
+          <!-- Country & City -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input
+                id="country"
+                type="text"
+                [value]="doctorProfile.country"
+                disabled
+                aria-label="Country"
+              />
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input
+                id="city"
+                type="text"
+                [value]="doctorProfile.city"
+                disabled
+                aria-label="City"
+              />
+            </div>
+          </div>
+
+          <!-- Phone & Email -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input
+                id="phone"
+                type="text"
+                [value]="doctorProfile.phone"
+                disabled
+                aria-label="Phone"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                [value]="doctorProfile.email"
+                disabled
+                aria-label="Email"
+              />
+            </div>
+          </div>
+
+          <!-- Gender & National ID -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <input
+                id="gender"
+                type="text"
+                [value]="doctorProfile.gender"
+                disabled
+                aria-label="Gender"
+              />
+            </div>
+            <div class="form-group">
+              <label for="nationalId">National Id</label>
+              <input
+                id="nationalId"
+                type="text"
+                [value]="doctorProfile.nationalId"
+                disabled
+                aria-label="National Id"
+              />
+            </div>
+          </div>
+
+          <!-- Specialization -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="specialization">Specialization</label>
+              <input
+                id="specialization"
+                type="text"
+                [value]="doctorProfile.specialization ?? '—'"
+                disabled
+                aria-label="Specialization"
+              />
+            </div>
+            <div class="form-group"></div>
+          </div>
+        </form>
+
+        <!-- ── Certificates ── -->
+        <div class="certificates-section p-2">
+          <h6 class="certificates-title mb-3">
+            <i class="fa-solid fa-id-card me-2"></i>Certificates & Documents
+          </h6>
+          <div class="certificates-grid">
+            <!-- Graduation Degree -->
+            <div class="certificate-card">
+              <span class="certificate-label">Graduation Degree</span>
+              <div class="certificate-img-wrapper">
+                <img
+                  src="https://nesyan-api.runasp.net/{{
+                    doctorProfile.graduationDegree
+                  }}"
+                  alt="Graduation degree certificate"
+                  class="certificate-img"
+                />
+              </div>
+            </div>
+
+            <!-- Medical Association Card -->
+            <div class="certificate-card">
+              <span class="certificate-label">Medical Association Card</span>
+              <div class="certificate-img-wrapper">
+                <img
+                  src="https://nesyan-api.runasp.net/{{
+                    doctorProfile.medicalAssociationCard
+                  }}"
+                  alt="Medical association card"
+                  class="certificate-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

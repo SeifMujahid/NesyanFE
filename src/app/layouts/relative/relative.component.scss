@@ -158,3 +158,73 @@
 .w-48 {
   width: 48% !important ;
 }
+
+.patient2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  border: 1px solid rgb(21, 93, 252, 0.8);
+  box-shadow: 0 0 5px inset #155dfc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s all linear;
+}
+.patient2:hover {
+  background-color: #dbeafe;
+  box-shadow: 0 0 0px #155dfc inset;
+}
+
+.activeBox,
+.activeBox:hover {
+  background-color: #dbeafe;
+  box-shadow: 0 0 5px #155dfc;
+}
+
+.patient2 p {
+  margin: 0px;
+  font-weight: bolder;
+}
+
+.patient2 div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.patient2 .stage1 {
+  width: fit-content;
+  background-color: white;
+  color: #155dfc;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 3px inset rgb(0, 0, 0, 0.5);
+  border: 1px solid #155dfc;
+}
+
+.patient2 .stage2 {
+  width: fit-content;
+  background-color: white;
+  color: #016630;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 3px inset rgb(0, 0, 0, 0.5);
+  border: 1px solid #016630;
+}
+
+.patient2 .stage3 {
+  width: fit-content;
+  background-color: white;
+  color: #6e11b0;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 3px inset rgb(0, 0, 0, 0.5);
+  border: 1px solid #6e11b0;
+}
+
+.modal-body {
+  max-height: initial !important;
+}

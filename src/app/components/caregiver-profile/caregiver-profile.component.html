@@ -1,1 +1,196 @@
-<p>Caregiver Profile Works!</p>
+<app-main-nav></app-main-nav>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- main -->
+<!-- --------------------------------------------------------------------------------------- -->
+<section
+  class="main-section d-flex justify-content-center align-items-start gap-4"
+>
+  <div class="container">
+    <div
+      class="top d-flex justify-content-between align-items-center mb-4 border-b"
+    >
+      <h2><i class="fa-solid fa-user-tie me-2"></i>My Profile</h2>
+      <a routerLink="/caregiver" class="btn btn-primary">Back to Home</a>
+    </div>
+
+    <div
+      class="profile-content d-flex justify-content-between align-content-start w-100 p-2"
+      [formGroup]="profileForm"
+    >
+      <!-- ── Profile Image ── -->
+      <div class="profile-image col-2 rounded me-2">
+        <div class="image-wrapper" [class.image-editable]="isEditMode">
+          <img
+            class="w-100 rounded"
+            src="https://nesyan-api.runasp.net/{{ imagePreview }}"
+            alt="Profile Image"
+          />
+          <!-- Overlay shown only in edit mode -->
+          <label *ngIf="isEditMode" for="imageUpload" class="image-overlay">
+            <i class="fa-solid fa-camera"></i>
+            <span>Change</span>
+          </label>
+        </div>
+        <input
+          type="file"
+          id="imageUpload"
+          accept="image/*"
+          class="d-none"
+          (change)="onImageChange($event)"
+        />
+      </div>
+
+      <!-- ── Form ── -->
+      <div class="form-Container col-10">
+        <form class="d-flex flex-column justify-content-center w-100 p-2">
+          <!-- First Name & Last Name -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                formControlName="fName"
+                [class.editable-field]="isEditMode"
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lName"
+                [class.editable-field]="isEditMode"
+              />
+            </div>
+          </div>
+
+          <!-- Username & Age -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="userName">User Name</label>
+              <input
+                type="text"
+                id="userName"
+                formControlName="userName"
+                [class.editable-field]="isEditMode"
+              />
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                id="age"
+                formControlName="age"
+                [class.editable-field]="isEditMode"
+              />
+            </div>
+          </div>
+
+          <!-- Country & City -->
+          <div
+            class="form-bottom d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select
+                id="country"
+                formControlName="country"
+                [class.editable-field]="isEditMode"
+              >
+                <option value="" disabled hidden>Select your country</option>
+                <option value="egypt">Egypt</option>
+                <option value="saudi-arabia">Saudi Arabia</option>
+                <option value="kuwait">Kuwait</option>
+                <option value="qatar">Qatar</option>
+                <option value="uae">United Arab Emirates</option>
+                <option value="algeria">Algeria</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input
+                type="text"
+                id="city"
+                formControlName="city"
+                [class.editable-field]="isEditMode"
+              />
+            </div>
+          </div>
+
+          <!-- Phone & Email -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input
+                type="text"
+                id="phone"
+                formControlName="phone"
+                [class.editable-field]="isEditMode"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email"
+                >Email <span class="readonly-badge">Read only</span></label
+              >
+              <input type="email" id="email" formControlName="email" />
+            </div>
+          </div>
+
+          <!-- Gender & National ID -->
+          <div
+            class="form-top d-flex justify-content-between align-items-center w-100"
+          >
+            <div class="form-group">
+              <label for="gender"
+                >Gender <span class="readonly-badge">Read only</span></label
+              >
+              <input type="text" id="gender" formControlName="gender" />
+            </div>
+            <div class="form-group">
+              <label for="nationalId"
+                >National Id
+                <span class="readonly-badge">Read only</span></label
+              >
+              <input type="text" id="nationalId" formControlName="nationalId" />
+            </div>
+          </div>
+        </form>
+
+        <!-- Actions -->
+        <div
+          class="w-100 d-flex justify-content-end align-items-center gap-2 p-2"
+        >
+          <button
+            class="btn btn-outline-secondary"
+            *ngIf="isEditMode"
+            (click)="toggleEdit()"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-primary"
+            *ngIf="!isEditMode"
+            (click)="toggleEdit()"
+          >
+            <i class="fa-solid fa-pen me-1"></i> Edit
+          </button>
+          <button
+            *ngIf="isEditMode"
+            class="btn btn-success"
+            [disabled]="profileForm.invalid"
+            (click)="saveProfile()"
+          >
+            <i class="fa-solid fa-floppy-disk me-1"></i> Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

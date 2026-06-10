@@ -161,4 +161,29 @@ export class DoctorService {
       `${this.baseUrl}/api/Doctor/patient/${patientId}/report`,
     );
   }
+
+  getDoctorProfile(doctorId: number): Observable<any> {
+    return this._httpClient.get(
+      `${this.baseUrl}/api/Doctor/${doctorId}/profile`,
+    );
+  }
+
+  editDoctorProfile(doctorId: number, formData: FormData): Observable<any> {
+    return this._httpClient.put(
+      `${this.baseUrl}/api/Doctor/${doctorId}`,
+      formData,
+    );
+  }
+
+  getDoctorPatients2(doctorId: number): Observable<any> {
+    return this._httpClient.get(
+      `${this.baseUrl}/api/DoctorPatient/doctor/${doctorId}/patients`,
+    );
+  }
+
+  removeDoctorPatient2(doctorId: number, patientId: number): Observable<any> {
+    return this._httpClient.delete(
+      `${this.baseUrl}/api/DoctorPatient/doctor/${doctorId}/patient/${patientId}`,
+    );
+  }
 }

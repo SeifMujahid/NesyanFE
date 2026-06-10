@@ -9,24 +9,26 @@
     class="patient-container w-25 d-flex flex-column justify-content-center align-items-center gap-3"
   >
     <div class="top-part d-flex flex-column justify-content-center gap-2">
-      <a
-        routerLink="/relative/request-treatment"
+      <button
+        data-bs-target="#exampleModalToggle2"
+        data-bs-toggle="modal"
         class="requests-btn btn btn-primary"
       >
-        <i class="fa-solid fa-paper-plane me-1"></i>
-        <span>Send Treatment Request</span>
-      </a>
-      <a
-        routerLink="/relative/request-caregiver"
+        <i class="fa-solid fa-clipboard-list me-1"></i>
+        <span>Request Doctor</span>
+      </button>
+      <button
         class="requests-btn btn btn-primary"
+        data-bs-target="#exampleModalToggle3"
+        data-bs-toggle="modal"
       >
         <i class="fa-solid fa-hand-holding-medical me-1"></i>
         <span>Request Care Giver</span>
-      </a>
-      <a routerLink="#" class="new-account-btn btn btn-primary">
+      </button>
+      <!-- <a routerLink="#" class="new-account-btn btn btn-primary">
         <i class="fa-solid fa-users-gear me-1"></i>
         <span>Control Patient's List</span>
-      </a>
+      </a> -->
       <a
         routerLink="/relative/create-patient-account"
         class="new-account-btn btn btn-primary"
@@ -84,7 +86,11 @@
           <span> - Gender: {{ patientDetails.gender }}</span>
         </div>
       </div>
-      <a routerLink="#" class="requests-btn btn btn-primary">
+      <a
+        [routerLink]="['/relative/patient-profile']"
+        [queryParams]="{ patientId: patientDetails.patientId }"
+        class="requests-btn btn btn-primary"
+      >
         <i class="fa-solid fa-address-card me-1"></i>
         <span>View patient's Profile</span>
       </a>
@@ -218,6 +224,199 @@
         >
           Add
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- request doctor -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle2"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header justify-content-between">
+        <h1
+          class="modal-title fs-4 text-primary fw-bold"
+          id="exampleModalToggleLabel"
+        >
+          Send New Treatment Request
+        </h1>
+        <div class="d-flex justify-content-center align-items-center">
+          <button
+            class="btn btn-primary me-3 fw-bold px-3"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="sendNewRequest()"
+          >
+            Send
+          </button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p class="fw-bold m-0 py-2 text-center border-bottom border-primary">
+          Select Your Patient And Doctor
+        </p>
+        <div class="w-100 d-flex justify-content-between align-items-start p-2">
+          <div
+            class="w-50 p-2 d-flex flex-column justify-content-start align-items-center gap-2"
+          >
+            <p
+              class="fw-bold m-0 py-2 text-center border-bottom border-primary w-100"
+            >
+              Patients
+            </p>
+            <div
+              *ngFor="let patient of allPatients; let i = index"
+              class="w-100"
+            >
+              <div
+                class="patient2 w-100"
+                [class.activeBox]="activePatientIndex === i"
+                (click)="selectPatientRequest(patient.patientId, i)"
+              >
+                <p>{{ patient.fullName }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Age:{{ patient.age }}</span>
+                  <span class="stage{{ patient.currentStage }}"
+                    >Stage {{ patient.currentStage }}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="w-50 p-2 d-flex flex-column justify-content-start align-items-center gap-2"
+          >
+            <p
+              class="fw-bold m-0 py-2 text-center border-bottom border-primary w-100"
+            >
+              Doctors
+            </p>
+            <div *ngFor="let doctor of allDoctors; let i = index" class="w-100">
+              <div
+                class="patient2 w-100"
+                [class.activeBox]="activeDoctorIndex === i"
+                (click)="selectDoctor(doctor.doctorId, i)"
+              >
+                <p>{{ doctor.fullName }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Age:{{ doctor.age }}</span>
+                  <span>Specialization: {{ doctor.specialization }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- request caregiver -->
+<!-- --------------------------------------------------------------------------------------- -->
+<div
+  class="modal fade"
+  id="exampleModalToggle3"
+  aria-hidden="true"
+  aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header justify-content-between">
+        <h1
+          class="modal-title fs-4 text-primary fw-bold"
+          id="exampleModalToggleLabel"
+        >
+          Request New Care Giver
+        </h1>
+        <div class="d-flex justify-content-center align-items-center">
+          <button
+            class="btn btn-primary me-3 fw-bold px-3"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="sendNewRequestCaregiver()"
+          >
+            Send
+          </button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+      <div class="modal-body overflow-y-scroll" style="max-height: 400px">
+        <p class="fw-bold m-0 py-2 text-center border-bottom border-primary">
+          Select Your Patient And CareGiver
+        </p>
+        <div class="w-100 d-flex justify-content-between align-items-start p-2">
+          <div
+            class="w-50 p-2 d-flex flex-column justify-content-start align-items-center gap-2"
+          >
+            <p
+              class="fw-bold m-0 py-2 text-center border-bottom border-primary w-100"
+            >
+              Patients
+            </p>
+            <div
+              *ngFor="let patient of allPatients; let i = index"
+              class="w-100"
+            >
+              <div
+                class="patient2 w-100"
+                [class.activeBox]="activePatientIndex === i"
+                (click)="selectPatientRequest(patient.patientId, i)"
+              >
+                <p>{{ patient.fullName }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Age:{{ patient.age }}</span>
+                  <span class="stage{{ patient.currentStage }}"
+                    >Stage {{ patient.currentStage }}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="w-50 p-2 d-flex flex-column justify-content-start align-items-center gap-2"
+          >
+            <p
+              class="fw-bold m-0 py-2 text-center border-bottom border-primary w-100"
+            >
+              Care Giver
+            </p>
+            <div
+              *ngFor="let caregiver of allCaregivers; let i = index"
+              class="w-100"
+            >
+              <div
+                class="patient2 w-100"
+                [class.activeBox]="activecaregiverIndex === i"
+                (click)="selectCaregiver(caregiver.caregiverId, i)"
+              >
+                <p>{{ caregiver.fullName }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>Age:{{ caregiver.age }}</span>
+                  <!-- <span>Specialization: {{ caregiver.specialization }}</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

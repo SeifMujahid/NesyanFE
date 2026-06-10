@@ -18,6 +18,7 @@ export interface CognitivePrediction {
   message: string;
   prediction: string;
   confidence: number;
+  risk_score: number;
   probabilities: Probabilities;
   alert: string;
   predicted_at: string;

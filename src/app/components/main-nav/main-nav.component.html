@@ -9,8 +9,8 @@
     <a routerLink="/nesyan" class="logo-text ps-2">Nesyan</a>
   </div>
   <div class="d-flex align-items-center">
-    <span><i class="fa-solid fa-bell fs-3"></i></span>
-    <a routerLink="/patient/my-profile" class="m-2">
+    <!-- <span><i class="fa-solid fa-bell fs-3"></i></span> -->
+    <a (click)="profile()" class="m-2" role="button">
       <i class="fa-regular fa-circle-user fs-2"></i>
     </a>
     <span class="fs-5 fw-medium">{{ userName }}</span>

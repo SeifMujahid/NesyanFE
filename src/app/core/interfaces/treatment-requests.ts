@@ -67,3 +67,14 @@ export interface SendRequest {
   doctorId: number;
   relativeId: number;
 }
+
+export interface SendRequest2 {
+  nationalIdDoctor: any;
+  emailDoctor: any;
+  patientId: number;
+}
+export interface SendRequest3 {
+  nationalIdcaregavier: any;
+  emailcaregavier: any;
+  patientId: number;
+}
